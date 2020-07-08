@@ -1,5 +1,5 @@
-import { ThemeProvider, CSSReset, theme } from "@chakra-ui/core";
-import Navbar from "@/components/navbar";
+import { ThemeProvider, CSSReset, theme } from '@chakra-ui/core'
+import Navbar from '@/components/navbar'
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -8,7 +8,7 @@ const App = ({ Component, pageProps }) => {
       <Navbar />
       <Component {...pageProps} />
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
