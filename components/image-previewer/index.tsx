@@ -16,7 +16,7 @@ const ImagePreviewer = ({
       alignItems="center"
       p={12}
     >
-      <Box shadow="lg" w={`${browserWidth}%`}>
+      <Box shadow="lg" w={browserWidth}>
         <Stack spacing={0}>
           <Flex
             align="center"

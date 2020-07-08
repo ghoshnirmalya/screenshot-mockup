@@ -1,17 +1,8 @@
-import React, { useRef, FormEvent } from "react";
-import {
-  Box,
-  Button,
-  Stack,
-  FormControl,
-  FormLabel,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-} from "@chakra-ui/core";
+import React from "react";
+import { Box, Button, Stack, FormControl, FormLabel } from "@chakra-ui/core";
 import domtoimage from "dom-to-image";
 import ColorPicker from "@/components/color-picker";
+import { MdFileDownload } from "react-icons/md";
 
 const Sidebar = ({
   backgroundColor,
@@ -25,8 +16,9 @@ const Sidebar = ({
     domtoimage
       .toPng(document.getElementById("snapshot-node"), { quality: 0.95 })
       .then((dataUrl: string) => {
-        var link = document.createElement("a");
-        link.download = "my-image-name.jpeg";
+        let link = document.createElement("a");
+
+        link.download = "screenshot-mockup.png";
         link.href = dataUrl;
         link.click();
       })
@@ -55,27 +47,11 @@ const Sidebar = ({
           </FormControl>
         </Stack>
       </Box>
-      <Box p={4} borderBottomWidth={1}>
-        <FormControl>
-          <FormLabel>Browser Width {`${browserWidth}%`}</FormLabel>
-          <Slider
-            defaultValue={browserWidth}
-            min={40}
-            max={100}
-            step={1}
-            onChange={(value) => setBrowserWidth(value)}
-          >
-            <SliderTrack />
-            <SliderFilledTrack />
-            <SliderThumb />
-          </Slider>
-        </FormControl>
-      </Box>
       <Box position="absolute" bottom={0} p={4} w="full" borderTopWidth={1}>
         <Button
           onClick={generateAndDownloadImage}
           w="full"
-          leftIcon="arrow-down"
+          leftIcon={MdFileDownload}
           variantColor="cyan"
           size="lg"
         >

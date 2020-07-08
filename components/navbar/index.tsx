@@ -1,9 +1,8 @@
 import React from "react";
-import { Box, Link as _Link, Button, Stack } from "@chakra-ui/core";
-import { NextComponentType } from "next";
-import Link from "next/link";
+import { Box, IconButton, Stack, Image } from "@chakra-ui/core";
+import { MdDesktopMac, MdPhoneAndroid, MdTabletMac } from "react-icons/md";
 
-const Navbar: NextComponentType = () => {
+const Navbar = ({ browserWidth, setBrowserWidth }) => {
   return (
     <Box>
       <Box
@@ -24,24 +23,29 @@ const Navbar: NextComponentType = () => {
           <Box>
             <Stack isInline spacing={4} align="center">
               <Box>
-                <Link href="/">
-                  <_Link>Home</_Link>
-                </Link>
+                <Image src="/images/logo.png" alt="Screenshot Mockup" />
               </Box>
             </Stack>
           </Box>
           <Box>
             <Stack isInline spacing={4} align="center">
-              <Box>
-                <Link href="/sign-in">
-                  <_Link>Sign In</_Link>
-                </Link>
-              </Box>
-              <Box>
-                <Link href="/sign-up">
-                  <Button variantColor="cyan">Sign Up</Button>
-                </Link>
-              </Box>
+              {[
+                { label: "Desktop", icon: MdDesktopMac, browserWidth: "100%" },
+                { label: "Tablet", icon: MdTabletMac, browserWidth: "60%" },
+                { label: "Phone", icon: MdPhoneAndroid, browserWidth: "40%" },
+              ].map((device, index) => {
+                return (
+                  <Box key={index}>
+                    <IconButton
+                      aria-label={device.label}
+                      fontSize="20px"
+                      borderWidth={1}
+                      icon={device.icon}
+                      onClick={() => setBrowserWidth(device.browserWidth)}
+                    />
+                  </Box>
+                );
+              })}
             </Stack>
           </Box>
         </Stack>
