@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "format": "prettier-standard --format"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
@@ -24,11 +24,11 @@
     "@types/react-color": "^3.0.4",
     "husky": ">=4",
     "lint-staged": ">=10",
-    "prettier-standard": "^16.4.1",
+    "prettier": "^2.0.5",
     "typescript": "^3.9.6"
   },
   "lint-staged": {
-    "*.--format": "prettier-standard --write"
+    "*.--format": "prettier --write"
   },
   "husky": {
     "hooks": {
