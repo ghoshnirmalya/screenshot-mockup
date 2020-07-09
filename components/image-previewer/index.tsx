@@ -1,38 +1,63 @@
 import React from "react";
-import { Box, Button, Stack, Flex, Image } from "@chakra-ui/core";
+import { Box, Stack, Flex, Image } from "@chakra-ui/core";
 
 const ImagePreviewer = ({
-  backgroundColor,
+  previewBackgroundColor,
   browserBackgroundColor,
+  browserAddressBarBackgroundColor,
   browserWidth,
   image,
+  isBrowserAddressBarVisible,
+  isBrowserShadowVisible,
+  browserShadowSpread,
 }) => {
+  const browserAddressBarNode = () => {
+    if (!isBrowserAddressBarVisible) {
+      return false;
+    }
+
+    return (
+      <Stack spacing={0}>
+        <Flex
+          align="center"
+          h={8}
+          bg={browserAddressBarBackgroundColor}
+          borderTopLeftRadius="md"
+          borderTopRightRadius="md"
+          px={4}
+        >
+          <Stack spacing={2} isInline>
+            {["#fe5e55", "#febd2f", "#26c940"].map(
+              (color: string, index: number) => {
+                return (
+                  <Box key={index} bg={color} rounded="full" h={3} w={3} />
+                );
+              }
+            )}
+          </Stack>
+        </Flex>
+      </Stack>
+    );
+  };
+
   return (
     <Box
       id="snapshot-node"
-      bg={backgroundColor}
+      bg={previewBackgroundColor}
       d="flex"
       justifyContent="center"
       alignItems="center"
       p={12}
     >
-      <Box shadow="lg" w={browserWidth}>
-        <Stack spacing={0}>
-          <Flex
-            align="center"
-            h={8}
-            bg="black"
-            borderTopLeftRadius="md"
-            borderTopRightRadius="md"
-            px={4}
-          >
-            <Stack spacing={2} isInline>
-              <Box bg="#fe5e55" rounded="full" h={3} w={3} />
-              <Box bg="#febd2f" rounded="full" h={3} w={3} />
-              <Box bg="#26c940" rounded="full" h={3} w={3} />
-            </Stack>
-          </Flex>
-        </Stack>
+      <Box
+        shadow={
+          !!isBrowserShadowVisible
+            ? `0 ${browserShadowSpread}px 15px ${browserShadowSpread}px rgba(0,0,0,0.25)`
+            : "none"
+        }
+        w={browserWidth}
+      >
+        {browserAddressBarNode()}
         <Flex
           align="center"
           justify="center"

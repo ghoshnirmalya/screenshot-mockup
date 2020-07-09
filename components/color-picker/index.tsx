@@ -19,14 +19,13 @@ const ColorPicker = ({ color, setColor }) => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Stack spacing={4} isInline>
+        <Stack>
           <InputGroup>
             <Input
               type="input"
               roundedLeft="0"
               placeholder="#eee"
               value={color}
-              isFullWidth
               isReadOnly
             />
             <InputRightElement w={10}>

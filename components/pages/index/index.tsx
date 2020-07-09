@@ -8,11 +8,22 @@ import Navbar from "@/components/navbar";
 
 const Index: NextComponentType = () => {
   const [image, setImage] = useState<string | ArrayBuffer>("");
-  const [backgroundColor, setBackgroundColor] = useState("#EDF2F7");
+  const [previewBackgroundColor, setPreviewBackgroundColor] = useState(
+    "#EDF2F7"
+  );
   const [browserBackgroundColor, setBrowserBackgroundColor] = useState(
     "#0693E3"
   );
-  const [browserWidth, setBrowserWidth] = useState(100);
+  const [
+    browserAddressBarBackgroundColor,
+    setBrowserAddressBarBackgroundColor,
+  ] = useState("#000");
+  const [browserWidth, setBrowserWidth] = useState("auto");
+  const [isBrowserAddressBarVisible, setBrowserAddressBarVisibility] = useState(
+    true
+  );
+  const [isBrowserShadowVisible, setBrowserShadowVisibility] = useState(true);
+  const [browserShadowSpread, setBrowserShadowSpread] = useState(0);
 
   return (
     <>
@@ -25,20 +36,32 @@ const Index: NextComponentType = () => {
         {!image && <UploadImageButton image={image} setImage={setImage} />}
         {!!image && (
           <ImagePreviewer
-            backgroundColor={backgroundColor}
+            previewBackgroundColor={previewBackgroundColor}
             browserBackgroundColor={browserBackgroundColor}
             browserWidth={browserWidth}
             image={image}
+            browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
+            isBrowserAddressBarVisible={isBrowserAddressBarVisible}
+            isBrowserShadowVisible={isBrowserShadowVisible}
+            browserShadowSpread={browserShadowSpread}
           />
         )}
         <Box borderLeftWidth={1}>
           <Sidebar
-            backgroundColor={backgroundColor}
-            setBackgroundColor={setBackgroundColor}
+            previewBackgroundColor={previewBackgroundColor}
+            setPreviewBackgroundColor={setPreviewBackgroundColor}
             browserBackgroundColor={browserBackgroundColor}
             setBrowserBackgroundColor={setBrowserBackgroundColor}
-            browserWidth={browserWidth}
-            setBrowserWidth={setBrowserWidth}
+            browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
+            setBrowserAddressBarBackgroundColor={
+              setBrowserAddressBarBackgroundColor
+            }
+            isBrowserAddressBarVisible={isBrowserAddressBarVisible}
+            setBrowserAddressBarVisibility={setBrowserAddressBarVisibility}
+            isBrowserShadowVisible={isBrowserShadowVisible}
+            setBrowserShadowVisibility={setBrowserShadowVisibility}
+            browserShadowSpread={browserShadowSpread}
+            setBrowserShadowSpread={setBrowserShadowSpread}
           />
         </Box>
       </Grid>
