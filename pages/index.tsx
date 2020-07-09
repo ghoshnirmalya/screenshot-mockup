@@ -7,7 +7,7 @@ const IndexPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Index Page</title>
+        <title>Screenshot Mockup - Generate mockups for your screenshots</title>
       </Head>
       <Index />
     </>

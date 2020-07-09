@@ -10,6 +10,7 @@ const ImagePreviewer = ({
   isBrowserAddressBarVisible,
   isBrowserShadowVisible,
   browserShadowSpread,
+  isPreviewBackgroundTransparent,
 }) => {
   const browserAddressBarNode = () => {
     if (!isBrowserAddressBarVisible) {
@@ -43,7 +44,11 @@ const ImagePreviewer = ({
   return (
     <Box
       id="snapshot-node"
-      bg={previewBackgroundColor}
+      bg={
+        !!isPreviewBackgroundTransparent
+          ? "transparent"
+          : previewBackgroundColor
+      }
       d="flex"
       justifyContent="center"
       alignItems="center"
@@ -69,6 +74,8 @@ const ImagePreviewer = ({
             // @ts-ignore
             src={image}
             alt="Preview image"
+            borderBottomLeftRadius="md"
+            borderBottomRightRadius="md"
           />
         </Flex>
       </Box>
