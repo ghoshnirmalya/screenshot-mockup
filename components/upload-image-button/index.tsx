@@ -21,7 +21,7 @@ const UploadImageButton = ({ image, setImage }) => {
   };
 
   return (
-    <Box bg="gray.100" d="flex" justifyContent="center" alignItems="center">
+    <Box>
       <Button
         onClick={() => hiddenFileInput.current.click()}
         variantColor="cyan"

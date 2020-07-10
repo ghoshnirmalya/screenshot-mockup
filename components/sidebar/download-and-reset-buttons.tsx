@@ -20,7 +20,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
   };
 
   return (
-    <Stack spacing={4} isInline justifyContent="space-between">
+    <Stack spacing={4} justifyContent="space-between">
       <Button
         onClick={generateAndDownloadImage}
         isDisabled={!image}
@@ -37,7 +37,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         variantColor="red"
         size="lg"
       >
-        Reset
+        Change Image
       </Button>
     </Stack>
   );

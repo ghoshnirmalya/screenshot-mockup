@@ -34,7 +34,7 @@ const Index: NextComponentType = () => {
       gap={0}
       h={["auto", "auto", "auto", "100vh"]}
     >
-      <Box borderRightWidth={1}>
+      <Box borderRightWidth={1} gridRow={[2, 2, 2, 1]}>
         <Sidebar
           previewBackgroundColor={previewBackgroundColor}
           setPreviewBackgroundColor={setPreviewBackgroundColor}
@@ -58,20 +58,28 @@ const Index: NextComponentType = () => {
           setImage={setImage}
         />
       </Box>
-      {!image && <UploadImageButton image={image} setImage={setImage} />}
-      {!!image && (
-        <ImagePreviewer
-          previewBackgroundColor={previewBackgroundColor}
-          browserBackgroundColor={browserBackgroundColor}
-          browserWidth={browserWidth}
-          image={image}
-          browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
-          isBrowserAddressBarVisible={isBrowserAddressBarVisible}
-          isBrowserShadowVisible={isBrowserShadowVisible}
-          browserShadowSpread={browserShadowSpread}
-          isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
-        />
-      )}
+      <Box
+        minH={["50vh", "50vh", "50vh", "auto"]}
+        bg="gray.100"
+        d="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        {!image && <UploadImageButton image={image} setImage={setImage} />}
+        {!!image && (
+          <ImagePreviewer
+            previewBackgroundColor={previewBackgroundColor}
+            browserBackgroundColor={browserBackgroundColor}
+            browserWidth={browserWidth}
+            image={image}
+            browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
+            isBrowserAddressBarVisible={isBrowserAddressBarVisible}
+            isBrowserShadowVisible={isBrowserShadowVisible}
+            browserShadowSpread={browserShadowSpread}
+            isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
+          />
+        )}
+      </Box>
     </Grid>
   );
 };

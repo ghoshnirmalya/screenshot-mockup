@@ -27,8 +27,11 @@ const Sidebar = ({
   setImage,
 }) => {
   return (
-    <Box top={0} pos="sticky" height="100vh">
-      <Box height="calc(100vh - 81px)" overflowY="scroll">
+    <Box top={0} pos="sticky" height={["auto", "auto", "auto", "100vh"]}>
+      <Box
+        height={["auto", "auto", "auto", "calc(100vh - 81px)"]}
+        overflowY="scroll"
+      >
         <Box p={4} borderBottomWidth={1}>
           <Image src="/images/logo.svg" alt="Screenshot Mockup" />
         </Box>
@@ -67,7 +70,13 @@ const Sidebar = ({
           />
         </Box>
       </Box>
-      <Box position="absolute" bottom={0} p={4} w="full" borderTopWidth={1}>
+      <Box
+        position={["relative", "relative", "relative", "absolute"]}
+        bottom={0}
+        p={4}
+        w="full"
+        borderTopWidth={1}
+      >
         <DownloadAndResetButtons image={image} setImage={setImage} />
       </Box>
     </Box>
