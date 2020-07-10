@@ -53,6 +53,7 @@ const ImagePreviewer = ({
       justifyContent="center"
       alignItems="center"
       p={12}
+      minH="100vh"
     >
       <Box
         shadow={
