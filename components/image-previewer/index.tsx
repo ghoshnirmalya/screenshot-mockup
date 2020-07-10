@@ -59,6 +59,7 @@ const ImagePreviewer = ({
       bgPos="center"
       backgroundRepeat="no-repeat"
       bgSize="cover"
+      w="full"
     >
       <Box
         shadow={

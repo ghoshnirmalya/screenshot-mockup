@@ -19,7 +19,7 @@ const Index: NextComponentType = () => {
   const [
     browserAddressBarBackgroundColor,
     setBrowserAddressBarBackgroundColor,
-  ] = useState("#000");
+  ] = useState("#000000");
   const [browserWidth, setBrowserWidth] = useState("auto");
   const [isBrowserAddressBarVisible, setBrowserAddressBarVisibility] = useState(
     true
@@ -59,7 +59,6 @@ const Index: NextComponentType = () => {
           setPreviewBackgroundTransparent={setPreviewBackgroundTransparent}
           image={image}
           setImage={setImage}
-          backgroundImage={backgroundImage}
           backgroundImage={backgroundImage}
           setBackgroundImage={setBackgroundImage}
         />

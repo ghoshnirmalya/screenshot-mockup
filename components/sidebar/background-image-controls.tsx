@@ -65,16 +65,18 @@ const BackgroundImageControls = ({
               leftIcon={MdFileUpload}
               size="sm"
             >
-              Upload
+              {!backgroundImage ? "Upload" : "Change"}
             </Button>
-            <Button
-              onClick={() => setBackgroundImage("")}
-              leftIcon={MdDelete}
-              variantColor="red"
-              size="sm"
-            >
-              Remove
-            </Button>
+            {!!backgroundImage && (
+              <Button
+                onClick={() => setBackgroundImage("")}
+                leftIcon={MdDelete}
+                variantColor="red"
+                size="sm"
+              >
+                Remove
+              </Button>
+            )}
             <input
               type="file"
               accept="image/*"
