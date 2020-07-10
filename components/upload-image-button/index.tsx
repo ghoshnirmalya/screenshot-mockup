@@ -24,7 +24,7 @@ const UploadImageButton = ({ image, setImage }) => {
     <Box>
       <Button
         onClick={() => hiddenFileInput.current.click()}
-        variantColor="cyan"
+        variantColor="blue"
         size="lg"
         leftIcon="attachment"
       >

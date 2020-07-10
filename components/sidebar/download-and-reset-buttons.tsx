@@ -25,7 +25,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         onClick={generateAndDownloadImage}
         isDisabled={!image}
         leftIcon={MdFileDownload}
-        variantColor="cyan"
+        variantColor="blue"
         size="lg"
       >
         Download Image

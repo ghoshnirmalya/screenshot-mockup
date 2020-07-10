@@ -34,7 +34,7 @@ const DeviceControls = ({ browserWidth, setBrowserWidth }) => {
                 aria-label={device.label}
                 fontSize="20px"
                 variantColor={
-                  browserWidth === device.browserWidth ? "cyan" : "gray"
+                  browserWidth === device.browserWidth ? "blue" : "gray"
                 }
                 borderWidth={1}
                 icon={device.icon}

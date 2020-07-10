@@ -15,7 +15,7 @@ import {
   PopoverBody,
 } from "@chakra-ui/core";
 
-const ColorPicker = ({ color, setColor }) => {
+const ColorPicker = ({ color, setColor, id }) => {
   return (
     <Popover>
       <PopoverTrigger>
@@ -27,6 +27,7 @@ const ColorPicker = ({ color, setColor }) => {
               placeholder="#eee"
               value={color}
               isReadOnly
+              id={id}
             />
             <InputRightElement w={10}>
               <Box h={8} w={8} bg={color} rounded="md" borderWidth={1} />
