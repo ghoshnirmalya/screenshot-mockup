@@ -5,6 +5,7 @@ import ColorControls from "@/components/sidebar/color-controls";
 import BrowserControls from "@/components/sidebar/browser-controls";
 import PreviewWindowControls from "@/components/sidebar/preview-window-controls";
 import DeviceControls from "@/components/sidebar/device-controls";
+import BackgroundImageControls from "@/components/sidebar/background-image-controls";
 
 const Sidebar = ({
   previewBackgroundColor,
@@ -25,6 +26,8 @@ const Sidebar = ({
   setPreviewBackgroundTransparent,
   image,
   setImage,
+  backgroundImage,
+  setBackgroundImage,
 }) => {
   return (
     <Box top={0} pos="sticky" height={["auto", "auto", "auto", "100vh"]}>
@@ -67,6 +70,13 @@ const Sidebar = ({
           <PreviewWindowControls
             isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
             setPreviewBackgroundTransparent={setPreviewBackgroundTransparent}
+          />
+        </Box>
+        <Box p={4} borderBottomWidth={1}>
+          <BackgroundImageControls
+            backgroundImage={backgroundImage}
+            setBackgroundImage={setBackgroundImage}
+            previewBackgroundColor={previewBackgroundColor}
           />
         </Box>
       </Box>

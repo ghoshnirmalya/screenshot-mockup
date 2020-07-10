@@ -1,7 +1,7 @@
 import React, { useRef, FormEvent } from "react";
 import { Box, Button } from "@chakra-ui/core";
 
-const UploadImageButton = ({ image, setImage }) => {
+const UploadImageButton = ({ setImage }) => {
   const hiddenFileInput = useRef(null);
 
   const handleImageUpload = (event: FormEvent) => {

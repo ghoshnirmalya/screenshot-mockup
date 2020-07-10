@@ -11,6 +11,7 @@ const ImagePreviewer = ({
   isBrowserShadowVisible,
   browserShadowSpread,
   isPreviewBackgroundTransparent,
+  backgroundImage,
 }) => {
   const browserAddressBarNode = () => {
     if (!isBrowserAddressBarVisible) {
@@ -54,6 +55,10 @@ const ImagePreviewer = ({
       alignItems="center"
       p={12}
       minH="100vh"
+      bgImage={`url(${backgroundImage})`}
+      bgPos="center"
+      backgroundRepeat="no-repeat"
+      bgSize="cover"
     >
       <Box
         shadow={
@@ -75,6 +80,7 @@ const ImagePreviewer = ({
             // @ts-ignore
             src={image}
             alt="Preview image"
+            borderRadius={!isBrowserAddressBarVisible ? "md" : 0}
             borderBottomLeftRadius="md"
             borderBottomRightRadius="md"
           />

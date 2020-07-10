@@ -7,6 +7,9 @@ import { NextComponentType } from "next";
 
 const Index: NextComponentType = () => {
   const [image, setImage] = useState<string | ArrayBuffer>("");
+  const [backgroundImage, setBackgroundImage] = useState<string | ArrayBuffer>(
+    ""
+  );
   const [previewBackgroundColor, setPreviewBackgroundColor] = useState(
     "#EDF2F7"
   );
@@ -56,6 +59,9 @@ const Index: NextComponentType = () => {
           setPreviewBackgroundTransparent={setPreviewBackgroundTransparent}
           image={image}
           setImage={setImage}
+          backgroundImage={backgroundImage}
+          backgroundImage={backgroundImage}
+          setBackgroundImage={setBackgroundImage}
         />
       </Box>
       <Box
@@ -65,7 +71,7 @@ const Index: NextComponentType = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {!image && <UploadImageButton image={image} setImage={setImage} />}
+        {!image && <UploadImageButton setImage={setImage} />}
         {!!image && (
           <ImagePreviewer
             previewBackgroundColor={previewBackgroundColor}
@@ -77,6 +83,7 @@ const Index: NextComponentType = () => {
             isBrowserShadowVisible={isBrowserShadowVisible}
             browserShadowSpread={browserShadowSpread}
             isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
+            backgroundImage={backgroundImage}
           />
         )}
       </Box>
