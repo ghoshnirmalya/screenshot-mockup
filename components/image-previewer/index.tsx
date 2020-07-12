@@ -54,7 +54,6 @@ const ImagePreviewer = ({
       justifyContent="center"
       alignItems="center"
       p={12}
-      minH="100vh"
       bgImage={`url(${backgroundImage})`}
       bgPos="center"
       backgroundRepeat="no-repeat"
