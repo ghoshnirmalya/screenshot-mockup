@@ -6,7 +6,7 @@ import Sidebar from "@/components/sidebar";
 import { NextComponentType } from "next";
 
 const Index: NextComponentType = () => {
-  const [image, setImage] = useState<string | ArrayBuffer>("");
+  const [image, setImage] = useState<string | ArrayBuffer | null>("");
   const [backgroundImage, setBackgroundImage] = useState<string | ArrayBuffer>(
     ""
   );

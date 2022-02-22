@@ -1,4 +1,10 @@
-import React, { useState, useEffect, FC } from "react";
+import React, {
+  useState,
+  useEffect,
+  FC,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import {
   Button,
   Stack,
@@ -12,8 +18,8 @@ import domtoimage from "dom-to-image";
 import { MdFileDownload, MdDelete, MdMoreHoriz } from "react-icons/md";
 
 interface IProps {
-  image: any;
-  setImage: any;
+  image: string | ArrayBuffer | null;
+  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
 }
 
 const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {

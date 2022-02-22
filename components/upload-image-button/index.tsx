@@ -1,8 +1,8 @@
-import React, { useRef, FormEvent, FC } from "react";
+import React, { useRef, FormEvent, FC, SetStateAction, Dispatch } from "react";
 import { Box, Button } from "@chakra-ui/react";
 
 interface IProps {
-  setImage: any;
+  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
 }
 
 const UploadImageButton: FC<IProps> = ({ setImage }) => {

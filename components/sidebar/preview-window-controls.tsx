@@ -1,9 +1,9 @@
 import { FormControl, FormLabel, HStack, Switch } from "@chakra-ui/react";
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 
 interface IProps {
-  isPreviewBackgroundTransparent: any;
-  setPreviewBackgroundTransparent: any;
+  isPreviewBackgroundTransparent: boolean;
+  setPreviewBackgroundTransparent: Dispatch<SetStateAction<boolean>>;
 }
 
 const PreviewWindowControls: FC<IProps> = ({

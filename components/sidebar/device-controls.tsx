@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import {
   Box,
   Stack,
@@ -16,8 +16,8 @@ import {
 } from "react-icons/md";
 
 interface IProps {
-  browserWidth: any;
-  setBrowserWidth: any;
+  browserWidth: string;
+  setBrowserWidth: Dispatch<SetStateAction<string>>;
 }
 
 const DeviceControls: FC<IProps> = ({ browserWidth, setBrowserWidth }) => {

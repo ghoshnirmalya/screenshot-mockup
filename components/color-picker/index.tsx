@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import { TwitterPicker } from "react-color";
 import {
   Popover,
@@ -16,9 +16,9 @@ import {
 } from "@chakra-ui/react";
 
 interface IProps {
-  color: any;
-  setColor: any;
-  id: any;
+  color: string;
+  setColor: Dispatch<SetStateAction<string>>;
+  id: string;
 }
 
 const ColorPicker: FC<IProps> = ({ color, setColor, id }) => {

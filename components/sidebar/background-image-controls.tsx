@@ -10,9 +10,9 @@ import {
 import { MdFileUpload, MdDelete } from "react-icons/md";
 
 interface IProps {
-  backgroundImage: string;
+  backgroundImage: string | ArrayBuffer;
   setBackgroundImage: Dispatch<SetStateAction<string | ArrayBuffer>>;
-  previewBackgroundColor: any;
+  previewBackgroundColor: string;
 }
 
 const BackgroundImageControls: FC<IProps> = ({
@@ -47,7 +47,7 @@ const BackgroundImageControls: FC<IProps> = ({
 
     return (
       <Image
-        src={backgroundImage}
+        src={backgroundImage as string}
         alt="Background image"
         rounded="md"
         boxSize="100px"

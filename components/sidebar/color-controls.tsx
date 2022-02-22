@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { Stack, FormControl, FormLabel, Text, HStack } from "@chakra-ui/react";
 import ColorPicker from "@/components/color-picker";
+import { FormControl, FormLabel, HStack, Stack } from "@chakra-ui/react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 
 interface IProps {
-  previewBackgroundColor: any;
-  setPreviewBackgroundColor: any;
-  browserBackgroundColor: any;
-  setBrowserBackgroundColor: any;
-  browserAddressBarBackgroundColor: any;
-  setBrowserAddressBarBackgroundColor: any;
+  previewBackgroundColor: string;
+  setPreviewBackgroundColor: Dispatch<SetStateAction<string>>;
+  browserBackgroundColor: string;
+  setBrowserBackgroundColor: Dispatch<SetStateAction<string>>;
+  browserAddressBarBackgroundColor: string;
+  setBrowserAddressBarBackgroundColor: Dispatch<SetStateAction<string>>;
 }
 
 const ColorControls: FC<IProps> = ({

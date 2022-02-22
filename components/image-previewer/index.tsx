@@ -2,16 +2,16 @@ import React, { FC } from "react";
 import { Box, Stack, Flex, Image } from "@chakra-ui/react";
 
 interface IProps {
-  previewBackgroundColor: any;
-  browserBackgroundColor: any;
-  browserAddressBarBackgroundColor: any;
-  browserWidth: any;
-  image: any;
-  isBrowserAddressBarVisible: any;
-  isBrowserShadowVisible: any;
-  browserShadowSpread: any;
-  isPreviewBackgroundTransparent: any;
-  backgroundImage: any;
+  previewBackgroundColor: string;
+  browserBackgroundColor: string;
+  browserAddressBarBackgroundColor: string;
+  browserWidth: string;
+  image: string | ArrayBuffer;
+  isBrowserAddressBarVisible: boolean;
+  isBrowserShadowVisible: boolean;
+  browserShadowSpread: number;
+  isPreviewBackgroundTransparent: boolean;
+  backgroundImage: string | ArrayBuffer;
 }
 
 const ImagePreviewer: FC<IProps> = ({

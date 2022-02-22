@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import {
   Box,
   Stack,
@@ -15,12 +15,12 @@ import {
 import { MdGraphicEq } from "react-icons/md";
 
 interface IProps {
-  isBrowserAddressBarVisible: any;
-  setBrowserAddressBarVisibility: any;
-  isBrowserShadowVisible: any;
-  setBrowserShadowVisibility: any;
-  browserShadowSpread: any;
-  setBrowserShadowSpread: any;
+  isBrowserAddressBarVisible: boolean;
+  setBrowserAddressBarVisibility: Dispatch<SetStateAction<boolean>>;
+  isBrowserShadowVisible: boolean;
+  setBrowserShadowVisibility: Dispatch<SetStateAction<boolean>>;
+  browserShadowSpread: number;
+  setBrowserShadowSpread: Dispatch<SetStateAction<number>>;
 }
 
 const BrowserControls: FC<IProps> = ({
