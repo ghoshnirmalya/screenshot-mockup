@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Stack, FormControl, FormLabel } from "@chakra-ui/react";
+import { Stack, FormControl, FormLabel, Text, HStack } from "@chakra-ui/react";
 import ColorPicker from "@/components/color-picker";
 
 interface IProps {
@@ -20,36 +20,42 @@ const ColorControls: FC<IProps> = ({
   setBrowserAddressBarBackgroundColor,
 }) => {
   return (
-    <Stack spacing={8}>
+    <Stack spacing={0}>
       <FormControl>
-        <FormLabel htmlFor="previewBackgroundColor">
-          Background Color of Preview window
-        </FormLabel>
-        <ColorPicker
-          color={previewBackgroundColor}
-          setColor={setPreviewBackgroundColor}
-          id="previewBackgroundColor"
-        />
+        <HStack justify="space-between">
+          <FormLabel htmlFor="previewBackgroundColor" w="50%">
+            Preview window background
+          </FormLabel>
+          <ColorPicker
+            color={previewBackgroundColor}
+            setColor={setPreviewBackgroundColor}
+            id="previewBackgroundColor"
+          />
+        </HStack>
       </FormControl>
       <FormControl>
-        <FormLabel htmlFor="browserBackgroundColor">
-          Background Color of Browser
-        </FormLabel>
-        <ColorPicker
-          color={browserBackgroundColor}
-          setColor={setBrowserBackgroundColor}
-          id="browserBackgroundColor"
-        />
+        <HStack justify="space-between">
+          <FormLabel htmlFor="browserBackgroundColor" w="50%">
+            Browser background
+          </FormLabel>
+          <ColorPicker
+            color={browserBackgroundColor}
+            setColor={setBrowserBackgroundColor}
+            id="browserBackgroundColor"
+          />
+        </HStack>
       </FormControl>
       <FormControl>
-        <FormLabel htmlFor="browserAddressBarBackgroundColor">
-          Background Color of Browser's Address Bar
-        </FormLabel>
-        <ColorPicker
-          color={browserAddressBarBackgroundColor}
-          setColor={setBrowserAddressBarBackgroundColor}
-          id="browserAddressBarBackgroundColor"
-        />
+        <HStack justify="space-between">
+          <FormLabel htmlFor="browserAddressBarBackgroundColor" w="50%">
+            Browser address bar background
+          </FormLabel>
+          <ColorPicker
+            color={browserAddressBarBackgroundColor}
+            setColor={setBrowserAddressBarBackgroundColor}
+            id="browserAddressBarBackgroundColor"
+          />
+        </HStack>
       </FormControl>
     </Stack>
   );

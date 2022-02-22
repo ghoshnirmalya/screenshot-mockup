@@ -77,16 +77,16 @@ const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
       <Box>
         <Stack spacing={4} justifyContent="space-between" isInline>
           <Button
-            onClick={generateAndDownloadImage}
+            onClick={() => setImage("")}
             isDisabled={!image}
-            leftIcon={<MdFileDownload />}
-            colorScheme="blue"
-            size="lg"
+            leftIcon={<MdDelete />}
+            colorScheme="red"
+            size="sm"
           >
-            Download Image
+            Change Image
           </Button>
           <Menu>
-            <MenuButton as={Button} size="lg">
+            <MenuButton as={Button} size="sm">
               <Box as={MdMoreHoriz} size="32px" />
             </MenuButton>
             <MenuList>
@@ -102,13 +102,13 @@ const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
         </Stack>
       </Box>
       <Button
-        onClick={() => setImage("")}
+        onClick={generateAndDownloadImage}
         isDisabled={!image}
-        leftIcon={<MdDelete />}
-        colorScheme="red"
+        leftIcon={<MdFileDownload />}
+        colorScheme="blue"
         size="lg"
       >
-        Change Image
+        Download Image
       </Button>
     </Stack>
   );

@@ -1,5 +1,5 @@
+import { FormControl, FormLabel, HStack, Switch } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { Stack, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 
 interface IProps {
   isPreviewBackgroundTransparent: any;
@@ -12,7 +12,10 @@ const PreviewWindowControls: FC<IProps> = ({
 }) => {
   return (
     <FormControl>
-      <Stack spacing={4} isInline alignItems="center">
+      <HStack justify="space-between">
+        <FormLabel htmlFor="show-transparent-preview-background">
+          Use transparent Background for Preview window
+        </FormLabel>
         <Switch
           id="show-transparent-preview-background"
           isChecked={isPreviewBackgroundTransparent}
@@ -20,10 +23,7 @@ const PreviewWindowControls: FC<IProps> = ({
             setPreviewBackgroundTransparent(!isPreviewBackgroundTransparent)
           }
         />
-        <FormLabel htmlFor="show-transparent-preview-background">
-          Use transparent Background for Preview window
-        </FormLabel>
-      </Stack>
+      </HStack>
     </FormControl>
   );
 };

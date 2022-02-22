@@ -64,7 +64,7 @@ const BackgroundImageControls: FC<IProps> = ({
         <FormLabel htmlFor="background-image">Background Image</FormLabel>
         <Stack spacing={4}>
           {backgroundImageNode()}
-          <Stack spacing={0} isInline justifyContent="space-between">
+          <Stack spacing={4} isInline justifyContent="flex-end" w="100%">
             <Button
               // @ts-expect-error
               onClick={() => hiddenFileInput.current.click()}
