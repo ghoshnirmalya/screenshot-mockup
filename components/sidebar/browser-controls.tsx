@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import {
   Box,
   Stack,
@@ -9,10 +9,21 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-} from "@chakra-ui/core";
+  Text,
+  HStack,
+} from "@chakra-ui/react";
 import { MdGraphicEq } from "react-icons/md";
 
-const BrowserControls = ({
+interface IProps {
+  isBrowserAddressBarVisible: boolean;
+  setBrowserAddressBarVisibility: Dispatch<SetStateAction<boolean>>;
+  isBrowserShadowVisible: boolean;
+  setBrowserShadowVisibility: Dispatch<SetStateAction<boolean>>;
+  browserShadowSpread: number;
+  setBrowserShadowSpread: Dispatch<SetStateAction<number>>;
+}
+
+const BrowserControls: FC<IProps> = ({
   isBrowserAddressBarVisible,
   setBrowserAddressBarVisibility,
   isBrowserShadowVisible,
@@ -21,48 +32,62 @@ const BrowserControls = ({
   setBrowserShadowSpread,
 }) => {
   return (
-    <Stack spacing={8}>
+    <Stack spacing={2}>
       <FormControl>
-        <Stack spacing={4} isInline alignItems="center">
-          <Switch
-            id="show-browser-address-bar"
-            isChecked={isBrowserAddressBarVisible}
-            onChange={() =>
-              setBrowserAddressBarVisibility(!isBrowserAddressBarVisible)
-            }
-          />
-          <FormLabel htmlFor="show-browser-address-bar">
-            Show Browser's Address Bar
-          </FormLabel>
+        <Stack spacing={4} w="100%">
+          <HStack justifyContent="space-between" alignItems="center">
+            <FormLabel htmlFor="show-browser-address-bar" w="50%">
+              Show browser address bar
+            </FormLabel>
+            <Switch
+              id="show-browser-address-bar"
+              isChecked={isBrowserAddressBarVisible}
+              onChange={() =>
+                setBrowserAddressBarVisibility(!isBrowserAddressBarVisible)
+              }
+            />
+          </HStack>
         </Stack>
       </FormControl>
       <FormControl>
-        <Stack spacing={4} isInline alignItems="center">
-          <Switch
-            id="show-browser-shadow"
-            isChecked={isBrowserShadowVisible}
-            onChange={() => setBrowserShadowVisibility(!isBrowserShadowVisible)}
-          />
-          <FormLabel htmlFor="show-browser-shadow">
-            Show Browser's Shadow
-          </FormLabel>
+        <Stack spacing={4} w="100%">
+          <HStack justifyContent="space-between" alignItems="center">
+            <FormLabel htmlFor="show-browser-shadow">
+              Show browser shadow
+            </FormLabel>
+            <Switch
+              id="show-browser-shadow"
+              isChecked={isBrowserShadowVisible}
+              onChange={() =>
+                setBrowserShadowVisibility(!isBrowserShadowVisible)
+              }
+            />
+          </HStack>
         </Stack>
       </FormControl>
       <FormControl>
-        <FormLabel>Shadow length of Browser</FormLabel>
-        <Slider
-          defaultValue={browserShadowSpread}
-          onChange={(value) => setBrowserShadowSpread(value)}
-          step={1}
-          min={0}
-          max={10}
-        >
-          <SliderTrack />
-          <SliderFilledTrack />
-          <SliderThumb size={6}>
-            <Box as={MdGraphicEq} />
-          </SliderThumb>
-        </Slider>
+        <Stack spacing={4} w="100%">
+          <HStack justifyContent="space-between" alignItems="center">
+            <FormLabel htmlFor="browser-shadow-length" w="50%">
+              Browser shadow length
+            </FormLabel>
+            <Slider
+              w="50%"
+              id="browser-shadow-length"
+              defaultValue={browserShadowSpread}
+              onChange={(value) => setBrowserShadowSpread(value)}
+              step={1}
+              min={0}
+              max={10}
+            >
+              <SliderTrack />
+              <SliderFilledTrack />
+              <SliderThumb boxSize={6}>
+                <Box as={MdGraphicEq} />
+              </SliderThumb>
+            </Slider>
+          </HStack>
+        </Stack>
       </FormControl>
     </Stack>
   );

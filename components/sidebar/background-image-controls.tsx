@@ -1,4 +1,4 @@
-import React, { useRef, FormEvent } from "react";
+import React, { useRef, FormEvent, FC, Dispatch, SetStateAction } from "react";
 import {
   Box,
   Button,
@@ -6,10 +6,16 @@ import {
   Stack,
   FormControl,
   FormLabel,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { MdFileUpload, MdDelete } from "react-icons/md";
 
-const BackgroundImageControls = ({
+interface IProps {
+  backgroundImage: string | ArrayBuffer;
+  setBackgroundImage: Dispatch<SetStateAction<string | ArrayBuffer>>;
+  previewBackgroundColor: string;
+}
+
+const BackgroundImageControls: FC<IProps> = ({
   backgroundImage,
   setBackgroundImage,
   previewBackgroundColor,
@@ -27,7 +33,7 @@ const BackgroundImageControls = ({
       reader.onload = () => {
         const dataURL = reader.result;
 
-        setBackgroundImage(dataURL);
+        setBackgroundImage(dataURL!);
       };
     }
   };
@@ -41,10 +47,10 @@ const BackgroundImageControls = ({
 
     return (
       <Image
-        src={backgroundImage}
+        src={backgroundImage as string}
         alt="Background image"
         rounded="md"
-        size="100px"
+        boxSize="100px"
         objectFit="cover"
         htmlHeight={100}
         mx="auto"
@@ -58,11 +64,12 @@ const BackgroundImageControls = ({
         <FormLabel htmlFor="background-image">Background Image</FormLabel>
         <Stack spacing={4}>
           {backgroundImageNode()}
-          <Stack spacing={0} isInline justifyContent="space-between">
+          <Stack spacing={4} isInline justifyContent="flex-end" w="100%">
             <Button
+              // @ts-expect-error
               onClick={() => hiddenFileInput.current.click()}
-              variantColor="blue"
-              leftIcon={MdFileUpload}
+              colorScheme="blue"
+              leftIcon={<MdFileUpload />}
               size="sm"
             >
               {!backgroundImage ? "Upload" : "Change"}
@@ -70,8 +77,8 @@ const BackgroundImageControls = ({
             {!!backgroundImage && (
               <Button
                 onClick={() => setBackgroundImage("")}
-                leftIcon={MdDelete}
-                variantColor="red"
+                leftIcon={<MdDelete />}
+                colorScheme="red"
                 size="sm"
               >
                 Remove

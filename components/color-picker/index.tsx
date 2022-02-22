@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 import { TwitterPicker } from "react-color";
 import {
   Popover,
@@ -13,42 +13,50 @@ import {
   PopoverCloseButton,
   PopoverHeader,
   PopoverBody,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 
-const ColorPicker = ({ color, setColor, id }) => {
+interface IProps {
+  color: string;
+  setColor: Dispatch<SetStateAction<string>>;
+  id: string;
+}
+
+const ColorPicker: FC<IProps> = ({ color, setColor, id }) => {
   return (
-    <Popover>
-      <PopoverTrigger>
-        <Stack>
-          <InputGroup>
-            <Input
-              type="input"
-              roundedLeft="0"
-              placeholder="#eee"
-              value={color}
-              isReadOnly
-              id={id}
+    <Box width={48}>
+      <Popover>
+        <PopoverTrigger>
+          <Stack>
+            <InputGroup>
+              <Input
+                type="input"
+                placeholder="#eee"
+                value={color}
+                isReadOnly
+                id={id}
+                size="sm"
+              />
+              <InputRightElement boxSize={8}>
+                <Box h={6} w={6} bg={color} rounded="md" borderWidth={1} />
+              </InputRightElement>
+            </InputGroup>
+          </Stack>
+        </PopoverTrigger>
+        <PopoverContent zIndex={4}>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Background color</PopoverHeader>
+          <PopoverBody>
+            <TwitterPicker
+              color={color}
+              onChangeComplete={(color) => setColor(color.hex)}
+              triangle="hide"
+              width="100%"
             />
-            <InputRightElement w={10}>
-              <Box h={8} w={8} bg={color} rounded="md" borderWidth={1} />
-            </InputRightElement>
-          </InputGroup>
-        </Stack>
-      </PopoverTrigger>
-      <PopoverContent zIndex={4}>
-        <PopoverArrow />
-        <PopoverCloseButton />
-        <PopoverHeader>Background color</PopoverHeader>
-        <PopoverBody>
-          <TwitterPicker
-            color={color}
-            onChangeComplete={(color) => setColor(color.hex)}
-            triangle="hide"
-            width="100%"
-          />
-        </PopoverBody>
-      </PopoverContent>
-    </Popover>
+          </PopoverBody>
+        </PopoverContent>
+      </Popover>
+    </Box>
   );
 };
 

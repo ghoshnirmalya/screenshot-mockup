@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Image } from "@chakra-ui/core";
+import React, { Dispatch, FC, SetStateAction } from "react";
+import { Box, Image } from "@chakra-ui/react";
 import DownloadAndResetButtons from "@/components/sidebar/download-and-reset-buttons";
 import ColorControls from "@/components/sidebar/color-controls";
 import BrowserControls from "@/components/sidebar/browser-controls";
@@ -7,7 +7,30 @@ import PreviewWindowControls from "@/components/sidebar/preview-window-controls"
 import DeviceControls from "@/components/sidebar/device-controls";
 import BackgroundImageControls from "@/components/sidebar/background-image-controls";
 
-const Sidebar = ({
+interface IProps {
+  previewBackgroundColor: string;
+  setPreviewBackgroundColor: Dispatch<SetStateAction<string>>;
+  browserBackgroundColor: string;
+  setBrowserBackgroundColor: Dispatch<SetStateAction<string>>;
+  browserAddressBarBackgroundColor: string;
+  setBrowserAddressBarBackgroundColor: Dispatch<SetStateAction<string>>;
+  isBrowserAddressBarVisible: boolean;
+  setBrowserAddressBarVisibility: Dispatch<SetStateAction<boolean>>;
+  isBrowserShadowVisible: boolean;
+  setBrowserShadowVisibility: Dispatch<SetStateAction<boolean>>;
+  browserShadowSpread: number;
+  setBrowserShadowSpread: Dispatch<SetStateAction<number>>;
+  browserWidth: string;
+  setBrowserWidth: Dispatch<SetStateAction<string>>;
+  isPreviewBackgroundTransparent: boolean;
+  setPreviewBackgroundTransparent: Dispatch<SetStateAction<boolean>>;
+  image: string | ArrayBuffer | null;
+  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
+  backgroundImage: string | ArrayBuffer;
+  setBackgroundImage: Dispatch<SetStateAction<string | ArrayBuffer>>;
+}
+
+const Sidebar: FC<IProps> = ({
   previewBackgroundColor,
   setPreviewBackgroundColor,
   browserBackgroundColor,

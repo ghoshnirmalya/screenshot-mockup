@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  FC,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import {
   Button,
   Stack,
@@ -7,11 +13,16 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import domtoimage from "dom-to-image";
 import { MdFileDownload, MdDelete, MdMoreHoriz } from "react-icons/md";
 
-const DownloadAndResetButtons = ({ image, setImage }) => {
+interface IProps {
+  image: string | ArrayBuffer | null;
+  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
+}
+
+const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
   const [imageType, setImageType] = useState("png");
 
   const supportedImageTypes = [
@@ -27,7 +38,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
   const generateAndDownloadImage = () => {
     if (imageType === "jpeg") {
       domtoimage
-        .toJpeg(document.getElementById("snapshot-node"))
+        .toJpeg(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -40,7 +51,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         });
     } else if (imageType === "png") {
       domtoimage
-        .toPng(document.getElementById("snapshot-node"))
+        .toPng(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -53,7 +64,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         });
     } else {
       domtoimage
-        .toSvg(document.getElementById("snapshot-node"))
+        .toSvg(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -72,19 +83,19 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
       <Box>
         <Stack spacing={4} justifyContent="space-between" isInline>
           <Button
-            onClick={generateAndDownloadImage}
+            onClick={() => setImage("")}
             isDisabled={!image}
-            leftIcon={MdFileDownload}
-            variantColor="blue"
-            size="lg"
+            leftIcon={<MdDelete />}
+            colorScheme="red"
+            size="sm"
           >
-            Download Image
+            Change Image
           </Button>
           <Menu>
-            <MenuButton as={Button} size="lg">
+            <MenuButton as={Button} size="sm">
               <Box as={MdMoreHoriz} size="32px" />
             </MenuButton>
-            <MenuList placement="top-end">
+            <MenuList>
               {supportedImageTypes.map((type) => {
                 return (
                   <MenuItem key={type.id} onClick={() => setImageType(type.id)}>
@@ -97,13 +108,13 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         </Stack>
       </Box>
       <Button
-        onClick={() => setImage("")}
+        onClick={generateAndDownloadImage}
         isDisabled={!image}
-        leftIcon={MdDelete}
-        variantColor="red"
+        leftIcon={<MdFileDownload />}
+        colorScheme="blue"
         size="lg"
       >
-        Change Image
+        Download Image
       </Button>
     </Stack>
   );

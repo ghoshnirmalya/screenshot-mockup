@@ -1,3 +1,4 @@
+import isProduction from "@/libs/is-production";
 import Document, {
   Head,
   Main,
@@ -5,8 +6,6 @@ import Document, {
   Html,
   DocumentContext,
 } from "next/document";
-
-const isProd = process.env.NODE_ENV === "production";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -19,7 +18,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {isProd && (
+          <title>
+            Screenshot Mockup - Generate mockups for your screenshots
+          </title>
+          {isProduction && (
             <>
               <script
                 async
