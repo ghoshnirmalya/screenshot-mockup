@@ -1,7 +1,11 @@
-import React, { useRef, FormEvent } from "react";
-import { Box, Button } from "@chakra-ui/core";
+import React, { useRef, FormEvent, FC } from "react";
+import { Box, Button } from "@chakra-ui/react";
 
-const UploadImageButton = ({ setImage }) => {
+interface IProps {
+  setImage: any;
+}
+
+const UploadImageButton: FC<IProps> = ({ setImage }) => {
   const hiddenFileInput = useRef(null);
 
   const handleImageUpload = (event: FormEvent) => {
@@ -23,10 +27,10 @@ const UploadImageButton = ({ setImage }) => {
   return (
     <Box>
       <Button
+        // @ts-expect-error
         onClick={() => hiddenFileInput.current.click()}
-        variantColor="blue"
+        colorScheme="blue"
         size="lg"
-        leftIcon="attachment"
       >
         Upload an image
       </Button>

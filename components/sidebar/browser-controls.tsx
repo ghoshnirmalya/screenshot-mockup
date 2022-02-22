@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   Box,
   Stack,
@@ -9,10 +9,19 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { MdGraphicEq } from "react-icons/md";
 
-const BrowserControls = ({
+interface IProps {
+  isBrowserAddressBarVisible: any;
+  setBrowserAddressBarVisibility: any;
+  isBrowserShadowVisible: any;
+  setBrowserShadowVisibility: any;
+  browserShadowSpread: any;
+  setBrowserShadowSpread: any;
+}
+
+const BrowserControls: FC<IProps> = ({
   isBrowserAddressBarVisible,
   setBrowserAddressBarVisibility,
   isBrowserShadowVisible,
@@ -59,7 +68,7 @@ const BrowserControls = ({
         >
           <SliderTrack />
           <SliderFilledTrack />
-          <SliderThumb size={6}>
+          <SliderThumb boxSize={6}>
             <Box as={MdGraphicEq} />
           </SliderThumb>
         </Slider>

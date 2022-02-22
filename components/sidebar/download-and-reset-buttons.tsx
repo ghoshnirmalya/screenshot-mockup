@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import {
   Button,
   Stack,
@@ -7,11 +7,16 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import domtoimage from "dom-to-image";
 import { MdFileDownload, MdDelete, MdMoreHoriz } from "react-icons/md";
 
-const DownloadAndResetButtons = ({ image, setImage }) => {
+interface IProps {
+  image: any;
+  setImage: any;
+}
+
+const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
   const [imageType, setImageType] = useState("png");
 
   const supportedImageTypes = [
@@ -27,7 +32,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
   const generateAndDownloadImage = () => {
     if (imageType === "jpeg") {
       domtoimage
-        .toJpeg(document.getElementById("snapshot-node"))
+        .toJpeg(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -40,7 +45,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         });
     } else if (imageType === "png") {
       domtoimage
-        .toPng(document.getElementById("snapshot-node"))
+        .toPng(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -53,7 +58,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
         });
     } else {
       domtoimage
-        .toSvg(document.getElementById("snapshot-node"))
+        .toSvg(document.getElementById("snapshot-node")!)
         .then((dataUrl: string) => {
           let link = document.createElement("a");
 
@@ -74,8 +79,8 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
           <Button
             onClick={generateAndDownloadImage}
             isDisabled={!image}
-            leftIcon={MdFileDownload}
-            variantColor="blue"
+            leftIcon={<MdFileDownload />}
+            colorScheme="blue"
             size="lg"
           >
             Download Image
@@ -84,7 +89,7 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
             <MenuButton as={Button} size="lg">
               <Box as={MdMoreHoriz} size="32px" />
             </MenuButton>
-            <MenuList placement="top-end">
+            <MenuList>
               {supportedImageTypes.map((type) => {
                 return (
                   <MenuItem key={type.id} onClick={() => setImageType(type.id)}>
@@ -99,8 +104,8 @@ const DownloadAndResetButtons = ({ image, setImage }) => {
       <Button
         onClick={() => setImage("")}
         isDisabled={!image}
-        leftIcon={MdDelete}
-        variantColor="red"
+        leftIcon={<MdDelete />}
+        colorScheme="red"
         size="lg"
       >
         Change Image

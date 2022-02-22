@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { TwitterPicker } from "react-color";
 import {
   Popover,
@@ -13,9 +13,15 @@ import {
   PopoverCloseButton,
   PopoverHeader,
   PopoverBody,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 
-const ColorPicker = ({ color, setColor, id }) => {
+interface IProps {
+  color: any;
+  setColor: any;
+  id: any;
+}
+
+const ColorPicker: FC<IProps> = ({ color, setColor, id }) => {
   return (
     <Popover>
       <PopoverTrigger>

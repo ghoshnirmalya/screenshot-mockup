@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Image } from "@chakra-ui/core";
+import React, { FC } from "react";
+import { Box, Image } from "@chakra-ui/react";
 import DownloadAndResetButtons from "@/components/sidebar/download-and-reset-buttons";
 import ColorControls from "@/components/sidebar/color-controls";
 import BrowserControls from "@/components/sidebar/browser-controls";
@@ -7,7 +7,30 @@ import PreviewWindowControls from "@/components/sidebar/preview-window-controls"
 import DeviceControls from "@/components/sidebar/device-controls";
 import BackgroundImageControls from "@/components/sidebar/background-image-controls";
 
-const Sidebar = ({
+interface IProps {
+  previewBackgroundColor: any;
+  setPreviewBackgroundColor: any;
+  browserBackgroundColor: any;
+  setBrowserBackgroundColor: any;
+  browserAddressBarBackgroundColor: any;
+  setBrowserAddressBarBackgroundColor: any;
+  isBrowserAddressBarVisible: any;
+  setBrowserAddressBarVisibility: any;
+  isBrowserShadowVisible: any;
+  setBrowserShadowVisibility: any;
+  browserShadowSpread: any;
+  setBrowserShadowSpread: any;
+  browserWidth: any;
+  setBrowserWidth: any;
+  isPreviewBackgroundTransparent: any;
+  setPreviewBackgroundTransparent: any;
+  image: any;
+  setImage: any;
+  backgroundImage: any;
+  setBackgroundImage: any;
+}
+
+const Sidebar: FC<IProps> = ({
   previewBackgroundColor,
   setPreviewBackgroundColor,
   browserBackgroundColor,

@@ -1,7 +1,20 @@
-import React from "react";
-import { Box, Stack, Flex, Image } from "@chakra-ui/core";
+import React, { FC } from "react";
+import { Box, Stack, Flex, Image } from "@chakra-ui/react";
 
-const ImagePreviewer = ({
+interface IProps {
+  previewBackgroundColor: any;
+  browserBackgroundColor: any;
+  browserAddressBarBackgroundColor: any;
+  browserWidth: any;
+  image: any;
+  isBrowserAddressBarVisible: any;
+  isBrowserShadowVisible: any;
+  browserShadowSpread: any;
+  isPreviewBackgroundTransparent: any;
+  backgroundImage: any;
+}
+
+const ImagePreviewer: FC<IProps> = ({
   previewBackgroundColor,
   browserBackgroundColor,
   browserAddressBarBackgroundColor,

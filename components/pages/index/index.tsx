@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid } from "@chakra-ui/core";
+import { Box, Grid } from "@chakra-ui/react";
 import UploadImageButton from "@/components/upload-image-button";
 import ImagePreviewer from "@/components/image-previewer";
 import Sidebar from "@/components/sidebar";
@@ -10,26 +10,21 @@ const Index: NextComponentType = () => {
   const [backgroundImage, setBackgroundImage] = useState<string | ArrayBuffer>(
     ""
   );
-  const [previewBackgroundColor, setPreviewBackgroundColor] = useState(
-    "#EDF2F7"
-  );
-  const [browserBackgroundColor, setBrowserBackgroundColor] = useState(
-    "#0693E3"
-  );
+  const [previewBackgroundColor, setPreviewBackgroundColor] =
+    useState("#EDF2F7");
+  const [browserBackgroundColor, setBrowserBackgroundColor] =
+    useState("#0693E3");
   const [
     browserAddressBarBackgroundColor,
     setBrowserAddressBarBackgroundColor,
   ] = useState("#000000");
   const [browserWidth, setBrowserWidth] = useState("auto");
-  const [isBrowserAddressBarVisible, setBrowserAddressBarVisibility] = useState(
-    true
-  );
+  const [isBrowserAddressBarVisible, setBrowserAddressBarVisibility] =
+    useState(true);
   const [isBrowserShadowVisible, setBrowserShadowVisibility] = useState(true);
   const [browserShadowSpread, setBrowserShadowSpread] = useState(0);
-  const [
-    isPreviewBackgroundTransparent,
-    setPreviewBackgroundTransparent,
-  ] = useState(false);
+  const [isPreviewBackgroundTransparent, setPreviewBackgroundTransparent] =
+    useState(false);
 
   return (
     <Grid

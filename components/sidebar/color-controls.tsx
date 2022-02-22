@@ -1,8 +1,17 @@
-import React from "react";
-import { Stack, FormControl, FormLabel } from "@chakra-ui/core";
+import React, { FC } from "react";
+import { Stack, FormControl, FormLabel } from "@chakra-ui/react";
 import ColorPicker from "@/components/color-picker";
 
-const ColorControls = ({
+interface IProps {
+  previewBackgroundColor: any;
+  setPreviewBackgroundColor: any;
+  browserBackgroundColor: any;
+  setBrowserBackgroundColor: any;
+  browserAddressBarBackgroundColor: any;
+  setBrowserAddressBarBackgroundColor: any;
+}
+
+const ColorControls: FC<IProps> = ({
   previewBackgroundColor,
   setPreviewBackgroundColor,
   browserBackgroundColor,

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   Box,
   Stack,
   FormControl,
   FormLabel,
   IconButton,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import {
   MdDesktopMac,
   MdPhoneAndroid,
@@ -13,18 +13,23 @@ import {
   MdSettingsEthernet,
 } from "react-icons/md";
 
-const DeviceControls = ({ browserWidth, setBrowserWidth }) => {
+interface IProps {
+  browserWidth: any;
+  setBrowserWidth: any;
+}
+
+const DeviceControls: FC<IProps> = ({ browserWidth, setBrowserWidth }) => {
   return (
     <FormControl>
       <FormLabel>Browser width</FormLabel>
       <Stack isInline spacing={4} align="center">
         {[
-          { label: "Desktop", icon: MdDesktopMac, browserWidth: "100%" },
-          { label: "Tablet", icon: MdTabletMac, browserWidth: "60%" },
-          { label: "Phone", icon: MdPhoneAndroid, browserWidth: "40%" },
+          { label: "Desktop", icon: <MdDesktopMac />, browserWidth: "100%" },
+          { label: "Tablet", icon: <MdTabletMac />, browserWidth: "60%" },
+          { label: "Phone", icon: <MdPhoneAndroid />, browserWidth: "40%" },
           {
             label: "Auto",
-            icon: MdSettingsEthernet,
+            icon: <MdSettingsEthernet />,
             browserWidth: "auto",
           },
         ].map((device, index) => {
@@ -33,7 +38,7 @@ const DeviceControls = ({ browserWidth, setBrowserWidth }) => {
               <IconButton
                 aria-label={device.label}
                 fontSize="20px"
-                variantColor={
+                colorScheme={
                   browserWidth === device.browserWidth ? "blue" : "gray"
                 }
                 borderWidth={1}

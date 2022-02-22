@@ -1,7 +1,12 @@
-import React from "react";
-import { Stack, FormControl, FormLabel, Switch } from "@chakra-ui/core";
+import React, { FC } from "react";
+import { Stack, FormControl, FormLabel, Switch } from "@chakra-ui/react";
 
-const PreviewWindowControls = ({
+interface IProps {
+  isPreviewBackgroundTransparent: any;
+  setPreviewBackgroundTransparent: any;
+}
+
+const PreviewWindowControls: FC<IProps> = ({
   isPreviewBackgroundTransparent,
   setPreviewBackgroundTransparent,
 }) => {
