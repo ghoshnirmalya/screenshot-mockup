@@ -1,4 +1,4 @@
-import ColorPicker from "@/components/color-picker";
+import ColorPicker from "@/components/ui/color-picker";
 import { FormControl, FormLabel, HStack, Stack } from "@chakra-ui/react";
 import React, { Dispatch, FC, SetStateAction } from "react";
 

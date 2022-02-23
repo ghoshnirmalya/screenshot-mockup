@@ -1,9 +1,9 @@
-import BackgroundImageControls from "@/components/sidebar/background-image-controls";
-import BrowserControls from "@/components/sidebar/browser-controls";
-import ColorControls from "@/components/sidebar/color-controls";
-import DeviceControls from "@/components/sidebar/device-controls";
-import DownloadAndResetButtons from "@/components/sidebar/download-and-reset-buttons";
-import PreviewWindowControls from "@/components/sidebar/preview-window-controls";
+import BackgroundImageControls from "@/components/ui/sidebar/background-image-controls";
+import BrowserControls from "@/components/ui/sidebar/browser-controls";
+import ColorControls from "@/components/ui/sidebar/color-controls";
+import DeviceControls from "@/components/ui/sidebar/device-controls";
+import DownloadAndResetButtons from "@/components/ui/sidebar/download-and-reset-buttons";
+import PreviewWindowControls from "@/components/ui/sidebar/preview-window-controls";
 import {
   Accordion,
   AccordionButton,

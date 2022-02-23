@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@chakra-ui/react";
-import UploadImageButton from "@/components/upload-image-button";
-import ImagePreviewer from "@/components/image-previewer";
-import Sidebar from "@/components/sidebar";
+import UploadImageButton from "@/components/ui/upload-image-button";
+import ImagePreviewer from "@/components/ui/image-previewer";
+import Sidebar from "@/components/ui/sidebar";
 import { NextComponentType } from "next";
 
 const Index: NextComponentType = () => {
