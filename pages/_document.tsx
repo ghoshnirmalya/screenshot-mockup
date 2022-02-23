@@ -18,9 +18,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>
-            Screenshot Mockup - Generate mockups for your screenshots
-          </title>
           {isProduction && (
             <>
               <script
