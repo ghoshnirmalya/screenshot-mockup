@@ -1,3 +1,4 @@
+import useConfigStore from "@/stores/config";
 import {
   Box,
   Button,
@@ -8,16 +9,12 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import domtoimage from "dom-to-image";
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, { FC, useState } from "react";
 import { MdDelete, MdFileDownload, MdMoreHoriz } from "react-icons/md";
 
-interface IProps {
-  image: string | ArrayBuffer | null;
-  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
-}
-
-const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
+const DownloadAndResetButtons: FC = () => {
   const [imageType, setImageType] = useState("png");
+  const { config, updateConfig } = useConfigStore();
 
   const supportedImageTypes = [
     { id: "jpeg", label: "Download jpg file" },
@@ -73,8 +70,8 @@ const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
       <Box>
         <Stack spacing={4} justifyContent="space-between" isInline>
           <Button
-            onClick={() => setImage("")}
-            isDisabled={!image}
+            onClick={() => updateConfig("image", "")}
+            isDisabled={!config.image}
             leftIcon={<MdDelete />}
             colorScheme="red"
             size="sm"
@@ -99,7 +96,7 @@ const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
       </Box>
       <Button
         onClick={generateAndDownloadImage}
-        isDisabled={!image}
+        isDisabled={!config.image}
         leftIcon={<MdFileDownload />}
         colorScheme="blue"
         size="lg"

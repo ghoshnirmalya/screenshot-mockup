@@ -1,34 +1,17 @@
-import React, { useState } from "react";
-import { Box, Grid } from "@chakra-ui/react";
-import UploadImageButton from "@/components/ui/upload-image-button";
 import ImagePreviewer from "@/components/ui/image-previewer";
 import Sidebar from "@/components/ui/sidebar";
-import { NextComponentType } from "next";
 import Onboarding from "@/components/ui/sidebar/onboarding";
+import UploadImageButton from "@/components/ui/upload-image-button";
+import useConfigStore from "@/stores/config";
+import { Box, Grid } from "@chakra-ui/react";
+import { NextComponentType } from "next";
+import React from "react";
 
 const Index: NextComponentType = () => {
-  const [image, setImage] = useState<string | ArrayBuffer | null>("");
-  const [backgroundImage, setBackgroundImage] = useState<string | ArrayBuffer>(
-    ""
-  );
-  const [previewBackgroundColor, setPreviewBackgroundColor] =
-    useState("#EDF2F7");
-  const [browserBackgroundColor, setBrowserBackgroundColor] =
-    useState("#0693E3");
-  const [
-    browserAddressBarBackgroundColor,
-    setBrowserAddressBarBackgroundColor,
-  ] = useState("#000000");
-  const [browserWidth, setBrowserWidth] = useState("auto");
-  const [isBrowserAddressBarVisible, setBrowserAddressBarVisibility] =
-    useState(true);
-  const [isBrowserShadowVisible, setBrowserShadowVisibility] = useState(true);
-  const [browserShadowSpread, setBrowserShadowSpread] = useState(0);
-  const [isPreviewBackgroundTransparent, setPreviewBackgroundTransparent] =
-    useState(false);
+  const { config } = useConfigStore();
 
-  if (!image) {
-    return <Onboarding setImage={setImage} />;
+  if (!config.image) {
+    return <Onboarding />;
   }
 
   return (
@@ -42,30 +25,7 @@ const Index: NextComponentType = () => {
         gridRow={[2, 2, 2, 1]}
         minH={["50vh", "50vh", "50vh", "auto"]}
       >
-        <Sidebar
-          previewBackgroundColor={previewBackgroundColor}
-          setPreviewBackgroundColor={setPreviewBackgroundColor}
-          browserBackgroundColor={browserBackgroundColor}
-          setBrowserBackgroundColor={setBrowserBackgroundColor}
-          browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
-          setBrowserAddressBarBackgroundColor={
-            setBrowserAddressBarBackgroundColor
-          }
-          isBrowserAddressBarVisible={isBrowserAddressBarVisible}
-          setBrowserAddressBarVisibility={setBrowserAddressBarVisibility}
-          isBrowserShadowVisible={isBrowserShadowVisible}
-          setBrowserShadowVisibility={setBrowserShadowVisibility}
-          browserShadowSpread={browserShadowSpread}
-          setBrowserShadowSpread={setBrowserShadowSpread}
-          browserWidth={browserWidth}
-          setBrowserWidth={setBrowserWidth}
-          isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
-          setPreviewBackgroundTransparent={setPreviewBackgroundTransparent}
-          image={image}
-          setImage={setImage}
-          backgroundImage={backgroundImage}
-          setBackgroundImage={setBackgroundImage}
-        />
+        <Sidebar />
       </Box>
       <Box
         minH={["50vh", "50vh", "50vh", "auto"]}
@@ -74,21 +34,8 @@ const Index: NextComponentType = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {!image && <UploadImageButton setImage={setImage} />}
-        {!!image && (
-          <ImagePreviewer
-            previewBackgroundColor={previewBackgroundColor}
-            browserBackgroundColor={browserBackgroundColor}
-            browserWidth={browserWidth}
-            image={image}
-            browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
-            isBrowserAddressBarVisible={isBrowserAddressBarVisible}
-            isBrowserShadowVisible={isBrowserShadowVisible}
-            browserShadowSpread={browserShadowSpread}
-            isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
-            backgroundImage={backgroundImage}
-          />
-        )}
+        {!config.image && <UploadImageButton />}
+        {!!config.image && <ImagePreviewer />}
       </Box>
     </Grid>
   );

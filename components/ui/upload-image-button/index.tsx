@@ -1,12 +1,10 @@
-import React, { useRef, FormEvent, FC, SetStateAction, Dispatch } from "react";
+import useConfigStore from "@/stores/config";
 import { Box, Button } from "@chakra-ui/react";
+import React, { FC, FormEvent, useRef } from "react";
 
-interface IProps {
-  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
-}
-
-const UploadImageButton: FC<IProps> = ({ setImage }) => {
-  const hiddenFileInput = useRef(null);
+const UploadImageButton: FC = () => {
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const { updateConfig } = useConfigStore();
 
   const handleImageUpload = (event: FormEvent) => {
     const target = event.target as HTMLInputElement;
@@ -19,7 +17,7 @@ const UploadImageButton: FC<IProps> = ({ setImage }) => {
       reader.onload = () => {
         const dataURL = reader.result;
 
-        setImage(dataURL);
+        updateConfig("image", dataURL);
       };
     }
   };
@@ -27,8 +25,7 @@ const UploadImageButton: FC<IProps> = ({ setImage }) => {
   return (
     <Box>
       <Button
-        // @ts-expect-error
-        onClick={() => hiddenFileInput.current.click()}
+        onClick={() => hiddenFileInput.current?.click()}
         colorScheme="blue"
         size="lg"
       >

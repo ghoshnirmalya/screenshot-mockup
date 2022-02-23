@@ -1,33 +1,12 @@
+import useConfigStore from "@/stores/config";
+import { Box, Flex, Image, Stack } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { Box, Stack, Flex, Image } from "@chakra-ui/react";
 
-interface IProps {
-  previewBackgroundColor: string;
-  browserBackgroundColor: string;
-  browserAddressBarBackgroundColor: string;
-  browserWidth: string;
-  image: string | ArrayBuffer;
-  isBrowserAddressBarVisible: boolean;
-  isBrowserShadowVisible: boolean;
-  browserShadowSpread: number;
-  isPreviewBackgroundTransparent: boolean;
-  backgroundImage: string | ArrayBuffer;
-}
+const ImagePreviewer: FC = () => {
+  const { config } = useConfigStore();
 
-const ImagePreviewer: FC<IProps> = ({
-  previewBackgroundColor,
-  browserBackgroundColor,
-  browserAddressBarBackgroundColor,
-  browserWidth,
-  image,
-  isBrowserAddressBarVisible,
-  isBrowserShadowVisible,
-  browserShadowSpread,
-  isPreviewBackgroundTransparent,
-  backgroundImage,
-}) => {
   const browserAddressBarNode = () => {
-    if (!isBrowserAddressBarVisible) {
+    if (!config.isBrowserAddressBarVisible) {
       return false;
     }
 
@@ -36,7 +15,7 @@ const ImagePreviewer: FC<IProps> = ({
         <Flex
           align="center"
           h={8}
-          bg={browserAddressBarBackgroundColor}
+          bg={config.browserAddressBarBackgroundColor}
           borderTopLeftRadius="md"
           borderTopRightRadius="md"
           px={4}
@@ -59,15 +38,15 @@ const ImagePreviewer: FC<IProps> = ({
     <Box
       id="snapshot-node"
       bg={
-        !!isPreviewBackgroundTransparent
+        !!config.isPreviewBackgroundTransparent
           ? "transparent"
-          : previewBackgroundColor
+          : config.previewBackgroundColor
       }
       d="flex"
       justifyContent="center"
       alignItems="center"
       p={12}
-      bgImage={`url(${backgroundImage})`}
+      bgImage={`url(${config.backgroundImage})`}
       bgPos="center"
       backgroundRepeat="no-repeat"
       bgSize="cover"
@@ -75,25 +54,24 @@ const ImagePreviewer: FC<IProps> = ({
     >
       <Box
         shadow={
-          !!isBrowserShadowVisible
-            ? `0 ${browserShadowSpread}px 15px ${browserShadowSpread}px rgba(0,0,0,0.25)`
+          !!config.isBrowserShadowVisible
+            ? `0 ${config.browserShadowSpread}px 15px ${config.browserShadowSpread}px rgba(0,0,0,0.25)`
             : "none"
         }
-        w={browserWidth}
+        w={config.browserWidth}
       >
         {browserAddressBarNode()}
         <Flex
           align="center"
           justify="center"
-          bg={browserBackgroundColor}
+          bg={config.browserBackgroundColor}
           borderBottomLeftRadius="md"
           borderBottomRightRadius="md"
         >
           <Image
-            // @ts-ignore
-            src={image}
+            src={config.image}
             alt="Preview image"
-            borderRadius={!isBrowserAddressBarVisible ? "md" : 0}
+            borderRadius={!config.isBrowserAddressBarVisible ? "md" : 0}
             borderBottomLeftRadius="md"
             borderBottomRightRadius="md"
           />

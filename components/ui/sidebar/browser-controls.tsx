@@ -1,36 +1,22 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import useConfigStore from "@/stores/config";
 import {
   Box,
-  Stack,
   FormControl,
   FormLabel,
-  Switch,
+  HStack,
   Slider,
-  SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  Text,
-  HStack,
+  SliderTrack,
+  Stack,
+  Switch,
 } from "@chakra-ui/react";
+import React, { FC } from "react";
 import { MdGraphicEq } from "react-icons/md";
 
-interface IProps {
-  isBrowserAddressBarVisible: boolean;
-  setBrowserAddressBarVisibility: Dispatch<SetStateAction<boolean>>;
-  isBrowserShadowVisible: boolean;
-  setBrowserShadowVisibility: Dispatch<SetStateAction<boolean>>;
-  browserShadowSpread: number;
-  setBrowserShadowSpread: Dispatch<SetStateAction<number>>;
-}
+const BrowserControls: FC = () => {
+  const { config, updateConfig } = useConfigStore();
 
-const BrowserControls: FC<IProps> = ({
-  isBrowserAddressBarVisible,
-  setBrowserAddressBarVisibility,
-  isBrowserShadowVisible,
-  setBrowserShadowVisibility,
-  browserShadowSpread,
-  setBrowserShadowSpread,
-}) => {
   return (
     <Stack spacing={2} w="100%">
       <FormControl>
@@ -41,9 +27,12 @@ const BrowserControls: FC<IProps> = ({
             </FormLabel>
             <Switch
               id="show-browser-address-bar"
-              isChecked={isBrowserAddressBarVisible}
+              isChecked={config.isBrowserAddressBarVisible}
               onChange={() =>
-                setBrowserAddressBarVisibility(!isBrowserAddressBarVisible)
+                updateConfig(
+                  "isBrowserAddressBarVisible",
+                  !config.isBrowserAddressBarVisible
+                )
               }
             />
           </HStack>
@@ -57,9 +46,12 @@ const BrowserControls: FC<IProps> = ({
             </FormLabel>
             <Switch
               id="show-browser-shadow"
-              isChecked={isBrowserShadowVisible}
+              isChecked={config.isBrowserShadowVisible}
               onChange={() =>
-                setBrowserShadowVisibility(!isBrowserShadowVisible)
+                updateConfig(
+                  "isBrowserShadowVisible",
+                  !config.isBrowserShadowVisible
+                )
               }
             />
           </HStack>
@@ -74,8 +66,8 @@ const BrowserControls: FC<IProps> = ({
             <Slider
               w="75%"
               id="browser-shadow-length"
-              defaultValue={browserShadowSpread}
-              onChange={(value) => setBrowserShadowSpread(value)}
+              defaultValue={config.browserShadowSpread}
+              onChange={(value) => updateConfig("browserShadowSpread", value)}
               step={1}
               min={0}
               max={10}

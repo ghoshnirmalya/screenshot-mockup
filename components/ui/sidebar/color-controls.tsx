@@ -1,24 +1,11 @@
 import ColorPicker from "@/components/ui/color-picker";
+import useConfigStore from "@/stores/config";
 import { FormControl, FormLabel, HStack, Stack } from "@chakra-ui/react";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC } from "react";
 
-interface IProps {
-  previewBackgroundColor: string;
-  setPreviewBackgroundColor: Dispatch<SetStateAction<string>>;
-  browserBackgroundColor: string;
-  setBrowserBackgroundColor: Dispatch<SetStateAction<string>>;
-  browserAddressBarBackgroundColor: string;
-  setBrowserAddressBarBackgroundColor: Dispatch<SetStateAction<string>>;
-}
+const ColorControls: FC = () => {
+  const { config, updateConfig } = useConfigStore();
 
-const ColorControls: FC<IProps> = ({
-  previewBackgroundColor,
-  setPreviewBackgroundColor,
-  browserBackgroundColor,
-  setBrowserBackgroundColor,
-  browserAddressBarBackgroundColor,
-  setBrowserAddressBarBackgroundColor,
-}) => {
   return (
     <Stack spacing={2}>
       <FormControl>
@@ -32,8 +19,8 @@ const ColorControls: FC<IProps> = ({
             Preview window background
           </FormLabel>
           <ColorPicker
-            color={previewBackgroundColor}
-            setColor={setPreviewBackgroundColor}
+            color={config.previewBackgroundColor}
+            setColor={(color) => updateConfig("previewBackgroundColor", color)}
             id="previewBackgroundColor"
           />
         </HStack>
@@ -49,8 +36,8 @@ const ColorControls: FC<IProps> = ({
             Browser background
           </FormLabel>
           <ColorPicker
-            color={browserBackgroundColor}
-            setColor={setBrowserBackgroundColor}
+            color={config.browserBackgroundColor}
+            setColor={(color) => updateConfig("browserBackgroundColor", color)}
             id="browserBackgroundColor"
           />
         </HStack>
@@ -66,8 +53,10 @@ const ColorControls: FC<IProps> = ({
             Browser address bar background
           </FormLabel>
           <ColorPicker
-            color={browserAddressBarBackgroundColor}
-            setColor={setBrowserAddressBarBackgroundColor}
+            color={config.browserAddressBarBackgroundColor}
+            setColor={(color) =>
+              updateConfig("browserAddressBarBackgroundColor", color)
+            }
             id="browserAddressBarBackgroundColor"
           />
         </HStack>

@@ -1,5 +1,6 @@
+import useConfigStore from "@/stores/config";
 import { Box, HStack, IconButton, Stack } from "@chakra-ui/react";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC } from "react";
 import {
   MdDesktopMac,
   MdPhoneAndroid,
@@ -7,12 +8,9 @@ import {
   MdTabletMac,
 } from "react-icons/md";
 
-interface IProps {
-  browserWidth: string;
-  setBrowserWidth: Dispatch<SetStateAction<string>>;
-}
+const DeviceControls: FC = () => {
+  const { config, updateConfig } = useConfigStore();
 
-const DeviceControls: FC<IProps> = ({ browserWidth, setBrowserWidth }) => {
   return (
     <HStack justifyContent="space-between" alignItems="center">
       <Stack isInline spacing={4} align="center">
@@ -36,11 +34,13 @@ const DeviceControls: FC<IProps> = ({ browserWidth, setBrowserWidth }) => {
                 aria-label={device.label}
                 fontSize="16px"
                 colorScheme={
-                  browserWidth === device.browserWidth ? "blue" : "gray"
+                  config.browserWidth === device.browserWidth ? "blue" : "gray"
                 }
                 borderWidth={1}
                 icon={device.icon}
-                onClick={() => setBrowserWidth(device.browserWidth)}
+                onClick={() =>
+                  updateConfig("browserWidth", device.browserWidth)
+                }
                 size="sm"
               />
             </Box>

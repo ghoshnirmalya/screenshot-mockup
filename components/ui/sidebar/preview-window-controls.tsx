@@ -1,15 +1,10 @@
+import useConfigStore from "@/stores/config";
 import { FormControl, FormLabel, HStack, Switch } from "@chakra-ui/react";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC } from "react";
 
-interface IProps {
-  isPreviewBackgroundTransparent: boolean;
-  setPreviewBackgroundTransparent: Dispatch<SetStateAction<boolean>>;
-}
+const PreviewWindowControls: FC = () => {
+  const { config, updateConfig } = useConfigStore();
 
-const PreviewWindowControls: FC<IProps> = ({
-  isPreviewBackgroundTransparent,
-  setPreviewBackgroundTransparent,
-}) => {
   return (
     <FormControl>
       <HStack justify="space-between">
@@ -18,9 +13,12 @@ const PreviewWindowControls: FC<IProps> = ({
         </FormLabel>
         <Switch
           id="show-transparent-preview-background"
-          isChecked={isPreviewBackgroundTransparent}
+          isChecked={config.isPreviewBackgroundTransparent}
           onChange={() =>
-            setPreviewBackgroundTransparent(!isPreviewBackgroundTransparent)
+            updateConfig(
+              "isPreviewBackgroundTransparent",
+              !config.isPreviewBackgroundTransparent
+            )
           }
         />
       </HStack>

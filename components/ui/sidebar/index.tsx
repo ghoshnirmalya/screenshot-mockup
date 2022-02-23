@@ -14,53 +14,9 @@ import {
   Image,
   VStack,
 } from "@chakra-ui/react";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC } from "react";
 
-interface IProps {
-  previewBackgroundColor: string;
-  setPreviewBackgroundColor: Dispatch<SetStateAction<string>>;
-  browserBackgroundColor: string;
-  setBrowserBackgroundColor: Dispatch<SetStateAction<string>>;
-  browserAddressBarBackgroundColor: string;
-  setBrowserAddressBarBackgroundColor: Dispatch<SetStateAction<string>>;
-  isBrowserAddressBarVisible: boolean;
-  setBrowserAddressBarVisibility: Dispatch<SetStateAction<boolean>>;
-  isBrowserShadowVisible: boolean;
-  setBrowserShadowVisibility: Dispatch<SetStateAction<boolean>>;
-  browserShadowSpread: number;
-  setBrowserShadowSpread: Dispatch<SetStateAction<number>>;
-  browserWidth: string;
-  setBrowserWidth: Dispatch<SetStateAction<string>>;
-  isPreviewBackgroundTransparent: boolean;
-  setPreviewBackgroundTransparent: Dispatch<SetStateAction<boolean>>;
-  image: string | ArrayBuffer | null;
-  setImage: Dispatch<SetStateAction<string | ArrayBuffer | null>>;
-  backgroundImage: string | ArrayBuffer;
-  setBackgroundImage: Dispatch<SetStateAction<string | ArrayBuffer>>;
-}
-
-const Sidebar: FC<IProps> = ({
-  previewBackgroundColor,
-  setPreviewBackgroundColor,
-  browserBackgroundColor,
-  setBrowserBackgroundColor,
-  browserAddressBarBackgroundColor,
-  setBrowserAddressBarBackgroundColor,
-  isBrowserAddressBarVisible,
-  setBrowserAddressBarVisibility,
-  isBrowserShadowVisible,
-  setBrowserShadowVisibility,
-  browserShadowSpread,
-  setBrowserShadowSpread,
-  browserWidth,
-  setBrowserWidth,
-  isPreviewBackgroundTransparent,
-  setPreviewBackgroundTransparent,
-  image,
-  setImage,
-  backgroundImage,
-  setBackgroundImage,
-}) => {
+const Sidebar: FC = () => {
   return (
     <Box top={0} pos="sticky" height={["auto", "auto", "auto", "100vh"]}>
       <Box
@@ -81,10 +37,7 @@ const Sidebar: FC<IProps> = ({
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              <DeviceControls
-                browserWidth={browserWidth}
-                setBrowserWidth={setBrowserWidth}
-              />
+              <DeviceControls />
             </AccordionPanel>
           </AccordionItem>
           <AccordionItem>
@@ -98,36 +51,9 @@ const Sidebar: FC<IProps> = ({
             </h2>
             <AccordionPanel pb={4}>
               <VStack spacing={2}>
-                <ColorControls
-                  previewBackgroundColor={previewBackgroundColor}
-                  setPreviewBackgroundColor={setPreviewBackgroundColor}
-                  browserBackgroundColor={browserBackgroundColor}
-                  setBrowserBackgroundColor={setBrowserBackgroundColor}
-                  browserAddressBarBackgroundColor={
-                    browserAddressBarBackgroundColor
-                  }
-                  setBrowserAddressBarBackgroundColor={
-                    setBrowserAddressBarBackgroundColor
-                  }
-                />
-                <BrowserControls
-                  isBrowserAddressBarVisible={isBrowserAddressBarVisible}
-                  setBrowserAddressBarVisibility={
-                    setBrowserAddressBarVisibility
-                  }
-                  isBrowserShadowVisible={isBrowserShadowVisible}
-                  setBrowserShadowVisibility={setBrowserShadowVisibility}
-                  browserShadowSpread={browserShadowSpread}
-                  setBrowserShadowSpread={setBrowserShadowSpread}
-                />
-                <PreviewWindowControls
-                  isPreviewBackgroundTransparent={
-                    isPreviewBackgroundTransparent
-                  }
-                  setPreviewBackgroundTransparent={
-                    setPreviewBackgroundTransparent
-                  }
-                />
+                <ColorControls />
+                <BrowserControls />
+                <PreviewWindowControls />
               </VStack>
             </AccordionPanel>
           </AccordionItem>
@@ -141,11 +67,7 @@ const Sidebar: FC<IProps> = ({
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              <BackgroundImageControls
-                backgroundImage={backgroundImage}
-                setBackgroundImage={setBackgroundImage}
-                previewBackgroundColor={previewBackgroundColor}
-              />
+              <BackgroundImageControls />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
@@ -157,7 +79,7 @@ const Sidebar: FC<IProps> = ({
         w="full"
         borderTopWidth={1}
       >
-        <DownloadAndResetButtons image={image} setImage={setImage} />
+        <DownloadAndResetButtons />
       </Box>
     </Box>
   );

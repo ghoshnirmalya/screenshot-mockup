@@ -1,19 +1,11 @@
+import useConfigStore from "@/stores/config";
 import { Box, Button, Image, Stack } from "@chakra-ui/react";
-import React, { Dispatch, FC, FormEvent, SetStateAction, useRef } from "react";
+import React, { FC, FormEvent, useRef } from "react";
 import { MdDelete, MdFileUpload } from "react-icons/md";
 
-interface IProps {
-  backgroundImage: string | ArrayBuffer;
-  setBackgroundImage: Dispatch<SetStateAction<string | ArrayBuffer>>;
-  previewBackgroundColor: string;
-}
-
-const BackgroundImageControls: FC<IProps> = ({
-  backgroundImage,
-  setBackgroundImage,
-  previewBackgroundColor,
-}) => {
-  const hiddenFileInput = useRef(null);
+const BackgroundImageControls: FC = () => {
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const { config, updateConfig } = useConfigStore();
 
   const handleImageUpload = (event: FormEvent) => {
     const target = event.target as HTMLInputElement;
@@ -26,21 +18,25 @@ const BackgroundImageControls: FC<IProps> = ({
       reader.onload = () => {
         const dataURL = reader.result;
 
-        setBackgroundImage(dataURL!);
+        updateConfig("backgroundImage", dataURL);
       };
     }
   };
 
   const backgroundImageNode = () => {
-    if (!backgroundImage) {
+    if (!config.backgroundImage) {
       return (
-        <Box backgroundColor={previewBackgroundColor} h={100} rounded="md" />
+        <Box
+          backgroundColor={config.previewBackgroundColor}
+          h={100}
+          rounded="md"
+        />
       );
     }
 
     return (
       <Image
-        src={backgroundImage as string}
+        src={config.backgroundImage}
         alt="Background image"
         rounded="md"
         boxSize="100px"
@@ -56,17 +52,16 @@ const BackgroundImageControls: FC<IProps> = ({
       {backgroundImageNode()}
       <Stack spacing={4} isInline justifyContent="flex-end" w="100%">
         <Button
-          // @ts-expect-error
-          onClick={() => hiddenFileInput.current.click()}
+          onClick={() => hiddenFileInput.current?.click()}
           colorScheme="blue"
           leftIcon={<MdFileUpload />}
           size="sm"
         >
-          {!backgroundImage ? "Upload" : "Change"}
+          {!config.backgroundImage ? "Upload" : "Change"}
         </Button>
-        {!!backgroundImage && (
+        {!!config.backgroundImage && (
           <Button
-            onClick={() => setBackgroundImage("")}
+            onClick={() => updateConfig("backgroundImage", "")}
             leftIcon={<MdDelete />}
             colorScheme="red"
             size="sm"

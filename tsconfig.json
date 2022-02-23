@@ -27,7 +27,10 @@
       ],
       "@/libs/*": [
         "libs/*"
-      ]
+      ],
+      "@/stores/*": [
+        "stores/*"
+      ],
     },
     "incremental": true
   },
