@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint": "next lint"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.5",
@@ -28,6 +29,8 @@
     "@types/react": "^17.0.39",
     "@types/react-color": "^3.0.6",
     "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0",
     "husky": ">=7",
     "lint-staged": ">=12",
     "prettier": "^2.5.1",
