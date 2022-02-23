@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/ghoshnirmalya/screenshot-mockup/compare/v0.0.3...v0.0.4) (2022-02-23)
+
+
+### Features
+
+* updates styles ([c7428f9](https://github.com/ghoshnirmalya/screenshot-mockup/commit/c7428f9cadb8e8587377b9fd8a7102a3c1fa3a31))
+* updates styles ([0b7734e](https://github.com/ghoshnirmalya/screenshot-mockup/commit/0b7734e90b6fe9c70e7bd0ea4da3d0882a1aac77))
+
+
+### Bug Fixes
+
+* moves 'title' to _app.tsx ([4be4eae](https://github.com/ghoshnirmalya/screenshot-mockup/commit/4be4eae75dfaa5a7be967a5770fbaca98dcdc3fc))
+
 ### [0.0.3](https://github.com/ghoshnirmalya/screenshot-mockup/compare/v0.0.2...v0.0.3) (2022-02-22)
 
 ### [0.0.2](https://github.com/ghoshnirmalya/screenshot-mockup/compare/v0.0.1...v0.0.2) (2020-07-12)
