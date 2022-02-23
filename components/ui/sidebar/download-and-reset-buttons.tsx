@@ -1,21 +1,15 @@
-import React, {
-  useState,
-  useEffect,
-  FC,
-  SetStateAction,
-  Dispatch,
-} from "react";
 import {
-  Button,
-  Stack,
   Box,
+  Button,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
+  MenuList,
+  Stack,
 } from "@chakra-ui/react";
 import domtoimage from "dom-to-image";
-import { MdFileDownload, MdDelete, MdMoreHoriz } from "react-icons/md";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import { MdDelete, MdFileDownload, MdMoreHoriz } from "react-icons/md";
 
 interface IProps {
   image: string | ArrayBuffer | null;
@@ -30,10 +24,6 @@ const DownloadAndResetButtons: FC<IProps> = ({ image, setImage }) => {
     { id: "png", label: "Download png file" },
     { id: "svg", label: "Download svg file" },
   ];
-
-  useEffect(() => {
-    !!image && generateAndDownloadImage();
-  }, [imageType]);
 
   const generateAndDownloadImage = () => {
     if (imageType === "jpeg") {
