@@ -20,10 +20,15 @@ const ColorControls: FC<IProps> = ({
   setBrowserAddressBarBackgroundColor,
 }) => {
   return (
-    <Stack spacing={0}>
+    <Stack spacing={2}>
       <FormControl>
         <HStack justify="space-between">
-          <FormLabel htmlFor="previewBackgroundColor" w="50%">
+          <FormLabel
+            htmlFor="previewBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
             Preview window background
           </FormLabel>
           <ColorPicker
@@ -35,7 +40,12 @@ const ColorControls: FC<IProps> = ({
       </FormControl>
       <FormControl>
         <HStack justify="space-between">
-          <FormLabel htmlFor="browserBackgroundColor" w="50%">
+          <FormLabel
+            htmlFor="browserBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
             Browser background
           </FormLabel>
           <ColorPicker
@@ -47,7 +57,12 @@ const ColorControls: FC<IProps> = ({
       </FormControl>
       <FormControl>
         <HStack justify="space-between">
-          <FormLabel htmlFor="browserAddressBarBackgroundColor" w="50%">
+          <FormLabel
+            htmlFor="browserAddressBarBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
             Browser address bar background
           </FormLabel>
           <ColorPicker

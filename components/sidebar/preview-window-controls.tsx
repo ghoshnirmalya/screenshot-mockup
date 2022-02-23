@@ -13,7 +13,7 @@ const PreviewWindowControls: FC<IProps> = ({
   return (
     <FormControl>
       <HStack justify="space-between">
-        <FormLabel htmlFor="show-transparent-preview-background">
+        <FormLabel htmlFor="show-transparent-preview-background" fontSize="sm">
           Use transparent Background for Preview window
         </FormLabel>
         <Switch

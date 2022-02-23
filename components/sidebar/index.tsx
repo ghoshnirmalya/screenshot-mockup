@@ -1,11 +1,20 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
-import { Box, Image } from "@chakra-ui/react";
-import DownloadAndResetButtons from "@/components/sidebar/download-and-reset-buttons";
-import ColorControls from "@/components/sidebar/color-controls";
-import BrowserControls from "@/components/sidebar/browser-controls";
-import PreviewWindowControls from "@/components/sidebar/preview-window-controls";
-import DeviceControls from "@/components/sidebar/device-controls";
 import BackgroundImageControls from "@/components/sidebar/background-image-controls";
+import BrowserControls from "@/components/sidebar/browser-controls";
+import ColorControls from "@/components/sidebar/color-controls";
+import DeviceControls from "@/components/sidebar/device-controls";
+import DownloadAndResetButtons from "@/components/sidebar/download-and-reset-buttons";
+import PreviewWindowControls from "@/components/sidebar/preview-window-controls";
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Image,
+  VStack,
+} from "@chakra-ui/react";
+import React, { Dispatch, FC, SetStateAction } from "react";
 
 interface IProps {
   previewBackgroundColor: string;
@@ -58,50 +67,88 @@ const Sidebar: FC<IProps> = ({
         height={["auto", "auto", "auto", "calc(100vh - 145px)"]}
         overflowY="scroll"
       >
-        <Box p={4} borderBottomWidth={1}>
+        <Box p={4}>
           <Image src="/images/logo.svg" alt="Screenshot Mockup" />
         </Box>
-        <Box p={4} borderBottomWidth={1}>
-          <DeviceControls
-            browserWidth={browserWidth}
-            setBrowserWidth={setBrowserWidth}
-          />
-        </Box>
-        <Box p={4} borderBottomWidth={1}>
-          <ColorControls
-            previewBackgroundColor={previewBackgroundColor}
-            setPreviewBackgroundColor={setPreviewBackgroundColor}
-            browserBackgroundColor={browserBackgroundColor}
-            setBrowserBackgroundColor={setBrowserBackgroundColor}
-            browserAddressBarBackgroundColor={browserAddressBarBackgroundColor}
-            setBrowserAddressBarBackgroundColor={
-              setBrowserAddressBarBackgroundColor
-            }
-          />
-        </Box>
-        <Box p={4} borderBottomWidth={1}>
-          <BrowserControls
-            isBrowserAddressBarVisible={isBrowserAddressBarVisible}
-            setBrowserAddressBarVisibility={setBrowserAddressBarVisibility}
-            isBrowserShadowVisible={isBrowserShadowVisible}
-            setBrowserShadowVisibility={setBrowserShadowVisibility}
-            browserShadowSpread={browserShadowSpread}
-            setBrowserShadowSpread={setBrowserShadowSpread}
-          />
-        </Box>
-        <Box p={4} borderBottomWidth={1}>
-          <PreviewWindowControls
-            isPreviewBackgroundTransparent={isPreviewBackgroundTransparent}
-            setPreviewBackgroundTransparent={setPreviewBackgroundTransparent}
-          />
-        </Box>
-        <Box p={4} borderBottomWidth={1}>
-          <BackgroundImageControls
-            backgroundImage={backgroundImage}
-            setBackgroundImage={setBackgroundImage}
-            previewBackgroundColor={previewBackgroundColor}
-          />
-        </Box>
+        <Accordion allowMultiple defaultIndex={[0, 1]}>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left" fontWeight="semibold">
+                  Browser width
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <DeviceControls
+                browserWidth={browserWidth}
+                setBrowserWidth={setBrowserWidth}
+              />
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left" fontWeight="semibold">
+                  Advanced settings
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <VStack spacing={2}>
+                <ColorControls
+                  previewBackgroundColor={previewBackgroundColor}
+                  setPreviewBackgroundColor={setPreviewBackgroundColor}
+                  browserBackgroundColor={browserBackgroundColor}
+                  setBrowserBackgroundColor={setBrowserBackgroundColor}
+                  browserAddressBarBackgroundColor={
+                    browserAddressBarBackgroundColor
+                  }
+                  setBrowserAddressBarBackgroundColor={
+                    setBrowserAddressBarBackgroundColor
+                  }
+                />
+                <BrowserControls
+                  isBrowserAddressBarVisible={isBrowserAddressBarVisible}
+                  setBrowserAddressBarVisibility={
+                    setBrowserAddressBarVisibility
+                  }
+                  isBrowserShadowVisible={isBrowserShadowVisible}
+                  setBrowserShadowVisibility={setBrowserShadowVisibility}
+                  browserShadowSpread={browserShadowSpread}
+                  setBrowserShadowSpread={setBrowserShadowSpread}
+                />
+                <PreviewWindowControls
+                  isPreviewBackgroundTransparent={
+                    isPreviewBackgroundTransparent
+                  }
+                  setPreviewBackgroundTransparent={
+                    setPreviewBackgroundTransparent
+                  }
+                />
+              </VStack>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left" fontWeight="semibold">
+                  Background image
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <BackgroundImageControls
+                backgroundImage={backgroundImage}
+                setBackgroundImage={setBackgroundImage}
+                previewBackgroundColor={previewBackgroundColor}
+              />
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       </Box>
       <Box
         position={["relative", "relative", "relative", "absolute"]}

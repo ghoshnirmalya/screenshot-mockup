@@ -32,11 +32,11 @@ const BrowserControls: FC<IProps> = ({
   setBrowserShadowSpread,
 }) => {
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} w="100%">
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel htmlFor="show-browser-address-bar" w="50%">
+            <FormLabel htmlFor="show-browser-address-bar" w="75%" fontSize="sm">
               Show browser address bar
             </FormLabel>
             <Switch
@@ -52,7 +52,7 @@ const BrowserControls: FC<IProps> = ({
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel htmlFor="show-browser-shadow">
+            <FormLabel htmlFor="show-browser-shadow" fontSize="sm">
               Show browser shadow
             </FormLabel>
             <Switch
@@ -68,11 +68,11 @@ const BrowserControls: FC<IProps> = ({
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel htmlFor="browser-shadow-length" w="50%">
+            <FormLabel htmlFor="browser-shadow-length" w="75%" fontSize="sm">
               Browser shadow length
             </FormLabel>
             <Slider
-              w="50%"
+              w="75%"
               id="browser-shadow-length"
               defaultValue={browserShadowSpread}
               onChange={(value) => setBrowserShadowSpread(value)}

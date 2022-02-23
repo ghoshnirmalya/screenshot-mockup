@@ -13,6 +13,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "dom-to-image": "^2.6.0",
+    "focus-visible": "^5.2.0",
     "framer-motion": "^6",
     "next": "^12.1.0",
     "react": "17.0.2",
