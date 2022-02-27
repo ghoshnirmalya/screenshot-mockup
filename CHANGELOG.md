@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/ghoshnirmalya/screenshot-mockup/compare/v0.0.4...v0.0.5) (2022-02-27)
+
+
+### Features
+
+* adds background image opacity ([a10fe71](https://github.com/ghoshnirmalya/screenshot-mockup/commit/a10fe713b158001f8d9a6f8c3cf3b19eb9e80d05))
+
 ### [0.0.4](https://github.com/ghoshnirmalya/screenshot-mockup/compare/v0.0.3...v0.0.4) (2022-02-23)
 
 
