@@ -1,12 +1,21 @@
 import useConfigStore from "@/stores/config";
 import { Box, Button } from "@chakra-ui/react";
-import React, { FC, FormEvent, useRef } from "react";
+import React, { FC, FormEvent, useEffect, useRef, useState } from "react";
 
 const UploadImageButton: FC = () => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
-  const { updateConfig } = useConfigStore();
+  const { config, updateConfig } = useConfigStore();
+  const [isUploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    if (config.image) {
+      setUploading(false);
+    }
+  }, [config.image]);
 
   const handleImageUpload = (event: FormEvent) => {
+    setUploading(true);
+
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
 
@@ -28,6 +37,7 @@ const UploadImageButton: FC = () => {
         onClick={() => hiddenFileInput.current?.click()}
         colorScheme="blue"
         size="lg"
+        isLoading={isUploading}
       >
         Upload an image
       </Button>
