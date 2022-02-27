@@ -33,6 +33,7 @@ const Index: NextComponentType = () => {
         d="flex"
         justifyContent="center"
         alignItems="center"
+        padding={12}
       >
         {!config.image && <UploadImageButton />}
         {!!config.image && <Previewer />}

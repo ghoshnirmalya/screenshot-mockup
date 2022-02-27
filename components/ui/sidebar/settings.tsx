@@ -118,6 +118,7 @@ const Settings: FC = () => {
                 htmlFor="show-container-background-color"
                 fontSize="sm"
                 mb={0}
+                w="75%"
               >
                 Show container background color
               </FormLabel>
