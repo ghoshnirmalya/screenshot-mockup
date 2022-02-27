@@ -1,3 +1,4 @@
+import ColorPicker from "@/components/ui/color-picker";
 import useConfigStore from "@/stores/config";
 import {
   Box,
@@ -14,11 +15,64 @@ import {
 import React, { FC } from "react";
 import { MdGraphicEq } from "react-icons/md";
 
-const BrowserControls: FC = () => {
+const AdvancedSettings: FC = () => {
   const { config, updateConfig } = useConfigStore();
 
   return (
-    <Stack spacing={2} w="100%">
+    <Stack spacing={2}>
+      <FormControl>
+        <HStack justify="space-between">
+          <FormLabel
+            htmlFor="previewBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
+            Preview window background
+          </FormLabel>
+          <ColorPicker
+            color={config.previewBackgroundColor}
+            setColor={(color) => updateConfig("previewBackgroundColor", color)}
+            id="previewBackgroundColor"
+          />
+        </HStack>
+      </FormControl>
+      <FormControl>
+        <HStack justify="space-between">
+          <FormLabel
+            htmlFor="browserBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
+            Browser background
+          </FormLabel>
+          <ColorPicker
+            color={config.browserBackgroundColor}
+            setColor={(color) => updateConfig("browserBackgroundColor", color)}
+            id="browserBackgroundColor"
+          />
+        </HStack>
+      </FormControl>
+      <FormControl>
+        <HStack justify="space-between">
+          <FormLabel
+            htmlFor="browserAddressBarBackgroundColor"
+            w="75%"
+            fontSize="sm"
+            mb={0}
+          >
+            Browser address bar background
+          </FormLabel>
+          <ColorPicker
+            color={config.browserAddressBarBackgroundColor}
+            setColor={(color) =>
+              updateConfig("browserAddressBarBackgroundColor", color)
+            }
+            id="browserAddressBarBackgroundColor"
+          />
+        </HStack>
+      </FormControl>
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
@@ -81,8 +135,28 @@ const BrowserControls: FC = () => {
           </HStack>
         </Stack>
       </FormControl>
+      <FormControl>
+        <HStack justify="space-between">
+          <FormLabel
+            htmlFor="show-transparent-preview-background"
+            fontSize="sm"
+          >
+            Use transparent Background for Preview window
+          </FormLabel>
+          <Switch
+            id="show-transparent-preview-background"
+            isChecked={config.isPreviewBackgroundTransparent}
+            onChange={() =>
+              updateConfig(
+                "isPreviewBackgroundTransparent",
+                !config.isPreviewBackgroundTransparent
+              )
+            }
+          />
+        </HStack>
+      </FormControl>
     </Stack>
   );
 };
 
-export default BrowserControls;
+export default AdvancedSettings;

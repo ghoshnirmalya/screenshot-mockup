@@ -1,9 +1,7 @@
-import BackgroundImageControls from "@/components/ui/sidebar/background-image-controls";
-import BrowserControls from "@/components/ui/sidebar/browser-controls";
-import ColorControls from "@/components/ui/sidebar/color-controls";
-import DeviceControls from "@/components/ui/sidebar/device-controls";
+import BackgroundImage from "@/components/ui/sidebar/background-image";
+import BrowserWidth from "@/components/ui/sidebar/browser-width";
+import AdvancedSettings from "@/components/ui/sidebar/advanced-settings";
 import DownloadAndResetButtons from "@/components/ui/sidebar/download-and-reset-buttons";
-import PreviewWindowControls from "@/components/ui/sidebar/preview-window-controls";
 import {
   Accordion,
   AccordionButton,
@@ -16,6 +14,21 @@ import {
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 
+const SIDEBAR_ITEMS = [
+  {
+    title: "Browser width",
+    component: BrowserWidth,
+  },
+  {
+    title: "Advanced settings",
+    component: AdvancedSettings,
+  },
+  {
+    title: "Background image",
+    component: BackgroundImage,
+  },
+];
+
 const Sidebar: FC = () => {
   return (
     <Box top={0} pos="sticky" height={["auto", "auto", "auto", "100vh"]}>
@@ -27,49 +40,23 @@ const Sidebar: FC = () => {
           <Image src="/images/logo.svg" alt="Screenshot Mockup" />
         </Box>
         <Accordion allowMultiple defaultIndex={[0, 1]}>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" fontWeight="semibold">
-                  Browser width
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <DeviceControls />
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" fontWeight="semibold">
-                  Advanced settings
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <VStack spacing={2}>
-                <ColorControls />
-                <BrowserControls />
-                <PreviewWindowControls />
-              </VStack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left" fontWeight="semibold">
-                  Background image
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <BackgroundImageControls />
-            </AccordionPanel>
-          </AccordionItem>
+          {SIDEBAR_ITEMS.map(({ title, component: Component }, index) => {
+            return (
+              <AccordionItem key={index}>
+                <h2>
+                  <AccordionButton>
+                    <Box flex="1" textAlign="left" fontWeight="semibold">
+                      {title}
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <Component />
+                </AccordionPanel>
+              </AccordionItem>
+            );
+          })}
         </Accordion>
       </Box>
       <Box

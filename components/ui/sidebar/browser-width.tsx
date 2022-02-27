@@ -8,7 +8,7 @@ import {
   MdTabletMac,
 } from "react-icons/md";
 
-const DeviceControls: FC = () => {
+const BrowserWidth: FC = () => {
   const { config, updateConfig } = useConfigStore();
 
   return (
@@ -51,4 +51,4 @@ const DeviceControls: FC = () => {
   );
 };
 
-export default DeviceControls;
+export default BrowserWidth;

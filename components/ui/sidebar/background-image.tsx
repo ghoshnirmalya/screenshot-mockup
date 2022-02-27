@@ -3,7 +3,7 @@ import { Box, Button, Image, Stack } from "@chakra-ui/react";
 import React, { FC, FormEvent, useRef } from "react";
 import { MdDelete, MdFileUpload } from "react-icons/md";
 
-const BackgroundImageControls: FC = () => {
+const BackgroundImage: FC = () => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
   const { config, updateConfig } = useConfigStore();
 
@@ -85,4 +85,4 @@ const BackgroundImageControls: FC = () => {
   );
 };
 
-export default BackgroundImageControls;
+export default BackgroundImage;
