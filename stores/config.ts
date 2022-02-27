@@ -4,14 +4,13 @@ import { devtools } from "zustand/middleware";
 const DEFAULT_CONFIG = {
   image: "",
   backgroundImage: "",
-  previewBackgroundColor: "#EDF2F7",
-  browserBackgroundColor: "#0693E3",
-  browserAddressBarBackgroundColor: "#000000",
-  browserWidth: "auto",
-  isBrowserAddressBarVisible: true,
-  isBrowserShadowVisible: true,
+  containerBackgroundColor: "#8ED1FC",
+  browserAddressBarBackgroundColor: "#0693E3",
+  browserWidth: "50%",
+  isBrowserAddressBarVisible: false,
+  isShadowVisible: false,
   browserShadowSpread: 0,
-  isPreviewBackgroundTransparent: false,
+  showContainerBackgroundColor: false,
 };
 
 interface ConfigState {

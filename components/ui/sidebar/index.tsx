@@ -1,6 +1,6 @@
+import Settings from "@/components/ui/sidebar/settings";
 import BackgroundImage from "@/components/ui/sidebar/background-image";
-import BrowserWidth from "@/components/ui/sidebar/browser-width";
-import AdvancedSettings from "@/components/ui/sidebar/advanced-settings";
+import BoxWidth from "@/components/ui/sidebar/box-width";
 import DownloadAndResetButtons from "@/components/ui/sidebar/download-and-reset-buttons";
 import {
   Accordion,
@@ -10,18 +10,17 @@ import {
   AccordionPanel,
   Box,
   Image,
-  VStack,
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 
 const SIDEBAR_ITEMS = [
   {
-    title: "Browser width",
-    component: BrowserWidth,
+    title: "Box width",
+    component: BoxWidth,
   },
   {
-    title: "Advanced settings",
-    component: AdvancedSettings,
+    title: "Settings",
+    component: Settings,
   },
   {
     title: "Background image",
@@ -39,7 +38,7 @@ const Sidebar: FC = () => {
         <Box p={4}>
           <Image src="/images/logo.svg" alt="Screenshot Mockup" />
         </Box>
-        <Accordion allowMultiple defaultIndex={[0, 1]}>
+        <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
           {SIDEBAR_ITEMS.map(({ title, component: Component }, index) => {
             return (
               <AccordionItem key={index}>

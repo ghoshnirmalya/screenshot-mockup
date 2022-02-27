@@ -38,9 +38,9 @@ const ImagePreviewer: FC = () => {
     <Box
       id="snapshot-node"
       bg={
-        !!config.isPreviewBackgroundTransparent
-          ? "transparent"
-          : config.previewBackgroundColor
+        !!config.showContainerBackgroundColor
+          ? config.containerBackgroundColor
+          : "transparent"
       }
       d="flex"
       justifyContent="center"
@@ -51,10 +51,11 @@ const ImagePreviewer: FC = () => {
       backgroundRepeat="no-repeat"
       bgSize="cover"
       w="full"
+      overflow="hidden"
     >
       <Box
         shadow={
-          !!config.isBrowserShadowVisible
+          !!config.isShadowVisible
             ? `0 ${config.browserShadowSpread}px 15px ${config.browserShadowSpread}px rgba(0,0,0,0.25)`
             : "none"
         }
@@ -64,7 +65,6 @@ const ImagePreviewer: FC = () => {
         <Flex
           align="center"
           justify="center"
-          bg={config.browserBackgroundColor}
           borderBottomLeftRadius="md"
           borderBottomRightRadius="md"
         >

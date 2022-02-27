@@ -1,14 +1,8 @@
 import useConfigStore from "@/stores/config";
-import { Box, HStack, IconButton, Stack } from "@chakra-ui/react";
+import { Box, Button, HStack, Stack } from "@chakra-ui/react";
 import React, { FC } from "react";
-import {
-  MdDesktopMac,
-  MdPhoneAndroid,
-  MdSettingsEthernet,
-  MdTabletMac,
-} from "react-icons/md";
 
-const BrowserWidth: FC = () => {
+const BoxWidth: FC = () => {
   const { config, updateConfig } = useConfigStore();
 
   return (
@@ -16,33 +10,30 @@ const BrowserWidth: FC = () => {
       <Stack isInline spacing={4} align="center">
         {[
           {
-            label: "Desktop",
-            icon: <MdDesktopMac />,
-            browserWidth: "100%",
+            label: "50%",
+            browserWidth: "50%",
           },
-          { label: "Tablet", icon: <MdTabletMac />, browserWidth: "60%" },
-          { label: "Phone", icon: <MdPhoneAndroid />, browserWidth: "40%" },
           {
-            label: "Auto",
-            icon: <MdSettingsEthernet />,
-            browserWidth: "auto",
+            label: "100%",
+            browserWidth: "100%",
           },
         ].map((device, index) => {
           return (
             <Box key={index}>
-              <IconButton
+              <Button
                 aria-label={device.label}
                 fontSize="16px"
                 colorScheme={
                   config.browserWidth === device.browserWidth ? "blue" : "gray"
                 }
                 borderWidth={1}
-                icon={device.icon}
                 onClick={() =>
                   updateConfig("browserWidth", device.browserWidth)
                 }
                 size="sm"
-              />
+              >
+                {device.label}
+              </Button>
             </Box>
           );
         })}
@@ -51,4 +42,4 @@ const BrowserWidth: FC = () => {
   );
 };
 
-export default BrowserWidth;
+export default BoxWidth;

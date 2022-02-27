@@ -25,25 +25,18 @@ const BackgroundImage: FC = () => {
 
   const backgroundImageNode = () => {
     if (!config.backgroundImage) {
-      return (
-        <Box
-          backgroundColor={config.previewBackgroundColor}
-          h={100}
-          rounded="md"
-        />
-      );
+      return <Box backgroundColor="gray.100" minH={100} rounded="md" p={4} />;
     }
 
     return (
-      <Image
-        src={config.backgroundImage}
-        alt="Background image"
-        rounded="md"
-        boxSize="100px"
-        objectFit="cover"
-        htmlHeight={100}
-        mx="auto"
-      />
+      <Box backgroundColor="gray.100" minH={100} rounded="md" p={4}>
+        <Image
+          src={config.backgroundImage}
+          alt="Background image"
+          rounded="md"
+          mx="auto"
+        />
+      </Box>
     );
   };
 
