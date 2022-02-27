@@ -2,7 +2,7 @@ import useConfigStore from "@/stores/config";
 import { Box, Flex, Image, Stack } from "@chakra-ui/react";
 import React, { FC } from "react";
 
-const ImagePreviewer: FC = () => {
+const Previewer: FC = () => {
   const { config } = useConfigStore();
 
   const browserAddressBarNode = () => {
@@ -16,8 +16,6 @@ const ImagePreviewer: FC = () => {
           align="center"
           h={8}
           bg={config.browserAddressBarBackgroundColor}
-          borderTopLeftRadius="md"
-          borderTopRightRadius="md"
           px={4}
         >
           <Stack spacing={2} isInline>
@@ -43,7 +41,7 @@ const ImagePreviewer: FC = () => {
           : "transparent"
       }
       d="flex"
-      justifyContent="center"
+      justifyContent={config.boxPosition}
       alignItems="center"
       p={12}
       bgImage={
@@ -55,6 +53,7 @@ const ImagePreviewer: FC = () => {
       backgroundRepeat="no-repeat"
       bgSize="cover"
       w="full"
+      h="fit-content"
     >
       <Box
         shadow={
@@ -63,26 +62,12 @@ const ImagePreviewer: FC = () => {
             : "none"
         }
         w={config.boxWidth}
-        overflow="hidden"
       >
         {browserAddressBarNode()}
-        <Flex
-          align="center"
-          justify="center"
-          borderBottomLeftRadius="md"
-          borderBottomRightRadius="md"
-        >
-          <Image
-            src={config.image}
-            alt="Preview image"
-            borderRadius={!config.isBrowserAddressBarVisible ? "md" : 0}
-            borderBottomLeftRadius="md"
-            borderBottomRightRadius="md"
-          />
-        </Flex>
+        <Image src={config.image} alt="Preview image" objectPosition="center" />
       </Box>
     </Box>
   );
 };
 
-export default ImagePreviewer;
+export default Previewer;

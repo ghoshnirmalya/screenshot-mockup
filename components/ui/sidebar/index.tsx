@@ -2,6 +2,7 @@ import Settings from "@/components/ui/sidebar/settings";
 import BackgroundImage from "@/components/ui/sidebar/background-image";
 import BoxWidth from "@/components/ui/sidebar/box-width";
 import DownloadAndResetButtons from "@/components/ui/sidebar/download-and-reset-buttons";
+import Layout from "@/components/ui/sidebar/layout";
 import {
   Accordion,
   AccordionButton,
@@ -21,6 +22,10 @@ const SIDEBAR_ITEMS = [
   {
     title: "Settings",
     component: Settings,
+  },
+  {
+    title: "Layout",
+    component: Layout,
   },
   {
     title: "Background image",

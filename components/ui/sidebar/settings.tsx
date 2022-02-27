@@ -2,6 +2,7 @@ import ColorPicker from "@/components/ui/color-picker";
 import useConfigStore from "@/stores/config";
 import {
   Box,
+  Button,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -22,27 +23,6 @@ const Settings: FC = () => {
 
   return (
     <Stack spacing={2}>
-      {!!config.showContainerBackgroundColor && (
-        <FormControl>
-          <HStack justify="space-between">
-            <FormLabel
-              htmlFor="containerBackgroundColor"
-              w="75%"
-              fontSize="sm"
-              mb={0}
-            >
-              Container background color
-            </FormLabel>
-            <ColorPicker
-              color={config.containerBackgroundColor}
-              setColor={(color) =>
-                updateConfig("containerBackgroundColor", color)
-              }
-              id="containerBackgroundColor"
-            />
-          </HStack>
-        </FormControl>
-      )}
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
@@ -158,6 +138,27 @@ const Settings: FC = () => {
           </HStack>
         </Stack>
       </FormControl>
+      {!!config.showContainerBackgroundColor && (
+        <FormControl>
+          <HStack justify="space-between">
+            <FormLabel
+              htmlFor="containerBackgroundColor"
+              w="75%"
+              fontSize="sm"
+              mb={0}
+            >
+              Container background color
+            </FormLabel>
+            <ColorPicker
+              color={config.containerBackgroundColor}
+              setColor={(color) =>
+                updateConfig("containerBackgroundColor", color)
+              }
+              id="containerBackgroundColor"
+            />
+          </HStack>
+        </FormControl>
+      )}
     </Stack>
   );
 };

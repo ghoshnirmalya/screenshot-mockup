@@ -1,4 +1,4 @@
-import ImagePreviewer from "@/components/ui/image-previewer";
+import Previewer from "@/components/ui/previewer";
 import Sidebar from "@/components/ui/sidebar";
 import Onboarding from "@/components/ui/sidebar/onboarding";
 import UploadImageButton from "@/components/ui/upload-image-button";
@@ -35,7 +35,7 @@ const Index: NextComponentType = () => {
         alignItems="center"
       >
         {!config.image && <UploadImageButton />}
-        {!!config.image && <ImagePreviewer />}
+        {!!config.image && <Previewer />}
       </Box>
     </Grid>
   );

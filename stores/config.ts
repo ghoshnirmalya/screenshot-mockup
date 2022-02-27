@@ -12,6 +12,7 @@ const DEFAULT_CONFIG = {
   browserShadowSpread: 0,
   containerBackgroundColor: "#8ED1FC",
   showContainerBackgroundColor: false,
+  boxPosition: "center",
 };
 
 interface ConfigState {
