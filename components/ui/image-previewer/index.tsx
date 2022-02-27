@@ -46,12 +46,15 @@ const ImagePreviewer: FC = () => {
       justifyContent="center"
       alignItems="center"
       p={12}
-      bgImage={`url(${config.backgroundImage})`}
+      bgImage={
+        config.backgroundImage
+          ? `linear-gradient(rgba(0, 0, 0, ${config.darkenBackgroundImage}),rgba(0, 0, 0, ${config.darkenBackgroundImage})) , url(${config.backgroundImage})`
+          : "none"
+      }
       bgPos="center"
       backgroundRepeat="no-repeat"
       bgSize="cover"
       w="full"
-      overflow="hidden"
     >
       <Box
         shadow={
@@ -59,7 +62,8 @@ const ImagePreviewer: FC = () => {
             ? `0 ${config.browserShadowSpread}px 15px ${config.browserShadowSpread}px rgba(0,0,0,0.25)`
             : "none"
         }
-        w={config.browserWidth}
+        w={config.boxWidth}
+        overflow="hidden"
       >
         {browserAddressBarNode()}
         <Flex

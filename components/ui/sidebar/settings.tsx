@@ -3,6 +3,7 @@ import useConfigStore from "@/stores/config";
 import {
   Box,
   FormControl,
+  FormHelperText,
   FormLabel,
   HStack,
   Slider,
@@ -11,6 +12,7 @@ import {
   SliderTrack,
   Stack,
   Switch,
+  VStack,
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { MdGraphicEq } from "react-icons/md";
@@ -20,29 +22,6 @@ const Settings: FC = () => {
 
   return (
     <Stack spacing={2}>
-      <FormControl>
-        <Stack spacing={4} w="100%">
-          <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel
-              htmlFor="show-container-background-color"
-              fontSize="sm"
-              mb={0}
-            >
-              Show container background color
-            </FormLabel>
-            <Switch
-              id="show-container-background-color"
-              isChecked={config.showContainerBackgroundColor}
-              onChange={() =>
-                updateConfig(
-                  "showContainerBackgroundColor",
-                  !config.showContainerBackgroundColor
-                )
-              }
-            />
-          </HStack>
-        </Stack>
-      </FormControl>
       {!!config.showContainerBackgroundColor && (
         <FormControl>
           <HStack justify="space-between">
@@ -151,6 +130,34 @@ const Settings: FC = () => {
           </Stack>
         </FormControl>
       )}
+      <FormControl>
+        <Stack spacing={4} w="100%">
+          <HStack justifyContent="space-between" alignItems="flex-start">
+            <VStack alignItems="flex-start" spacing={0}>
+              <FormLabel
+                htmlFor="show-container-background-color"
+                fontSize="sm"
+                mb={0}
+              >
+                Show container background color
+              </FormLabel>
+              <FormHelperText fontSize="xs">
+                Doesn&apos;t show up if background image is present.
+              </FormHelperText>
+            </VStack>
+            <Switch
+              id="show-container-background-color"
+              isChecked={config.showContainerBackgroundColor}
+              onChange={() =>
+                updateConfig(
+                  "showContainerBackgroundColor",
+                  !config.showContainerBackgroundColor
+                )
+              }
+            />
+          </HStack>
+        </Stack>
+      </FormControl>
     </Stack>
   );
 };

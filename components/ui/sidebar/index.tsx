@@ -38,7 +38,7 @@ const Sidebar: FC = () => {
         <Box p={4}>
           <Image src="/images/logo.svg" alt="Screenshot Mockup" />
         </Box>
-        <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
+        <Accordion allowMultiple defaultIndex={[0, 1]}>
           {SIDEBAR_ITEMS.map(({ title, component: Component }, index) => {
             return (
               <AccordionItem key={index}>

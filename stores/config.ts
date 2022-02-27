@@ -4,12 +4,13 @@ import { devtools } from "zustand/middleware";
 const DEFAULT_CONFIG = {
   image: "",
   backgroundImage: "",
-  containerBackgroundColor: "#8ED1FC",
+  darkenBackgroundImage: "0.5",
+  boxWidth: "50%",
   browserAddressBarBackgroundColor: "#0693E3",
-  browserWidth: "50%",
   isBrowserAddressBarVisible: false,
   isShadowVisible: false,
   browserShadowSpread: 0,
+  containerBackgroundColor: "#8ED1FC",
   showContainerBackgroundColor: false,
 };
 

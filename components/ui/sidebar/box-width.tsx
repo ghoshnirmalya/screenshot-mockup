@@ -11,11 +11,11 @@ const BoxWidth: FC = () => {
         {[
           {
             label: "50%",
-            browserWidth: "50%",
+            boxWidth: "50%",
           },
           {
             label: "100%",
-            browserWidth: "100%",
+            boxWidth: "100%",
           },
         ].map((device, index) => {
           return (
@@ -24,12 +24,10 @@ const BoxWidth: FC = () => {
                 aria-label={device.label}
                 fontSize="16px"
                 colorScheme={
-                  config.browserWidth === device.browserWidth ? "blue" : "gray"
+                  config.boxWidth === device.boxWidth ? "blue" : "gray"
                 }
                 borderWidth={1}
-                onClick={() =>
-                  updateConfig("browserWidth", device.browserWidth)
-                }
+                onClick={() => updateConfig("boxWidth", device.boxWidth)}
                 size="sm"
               >
                 {device.label}
