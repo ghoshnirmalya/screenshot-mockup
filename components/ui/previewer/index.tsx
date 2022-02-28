@@ -45,9 +45,9 @@ const Previewer: FC = () => {
           : "white"
       }
       d="flex"
-      justifyContent={config.boxHorizontalAlignment}
-      alignItems={config.boxVerticalAlignment}
-      p={config.containerPadding}
+      justifyContent="center"
+      alignItems="center"
+      p={12}
       bgImage={
         config.backgroundImage
           ? `linear-gradient(rgba(0, 0, 0, ${config.darkenBackgroundImage}),rgba(0, 0, 0, ${config.darkenBackgroundImage})) , url(${config.backgroundImage})`

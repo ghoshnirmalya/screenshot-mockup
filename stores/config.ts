@@ -12,9 +12,6 @@ const DEFAULT_CONFIG = {
   browserShadowSpread: 0,
   containerBackgroundColor: "#8ED1FC",
   showContainerBackgroundColor: false,
-  boxHorizontalAlignment: "center",
-  boxVerticalAlignment: "center",
-  containerPadding: 6,
 };
 
 interface ConfigState {
