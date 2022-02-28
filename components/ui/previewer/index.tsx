@@ -1,6 +1,7 @@
 import useConfigStore from "@/stores/config";
 import { Box, Flex, Image, Stack } from "@chakra-ui/react";
 import React, { FC } from "react";
+import Draggable from "react-draggable";
 
 const Previewer: FC = () => {
   const { config } = useConfigStore();
@@ -59,19 +60,29 @@ const Previewer: FC = () => {
       minH="full"
       h="fit-content"
     >
-      <Box
-        shadow={
-          !!config.isShadowVisible
-            ? `0 ${config.browserShadowSpread}px 15px ${config.browserShadowSpread}px rgba(0,0,0,0.25)`
-            : "none"
-        }
-        w={config.boxWidth}
-        rounded="md"
-        overflow="hidden"
-      >
-        {browserAddressBarNode()}
-        <Image src={config.image} alt="Preview image" objectPosition="center" />
-      </Box>
+      <Draggable>
+        <Box
+          shadow={
+            !!config.isShadowVisible
+              ? `0 ${config.browserShadowSpread}px 15px ${config.browserShadowSpread}px rgba(0,0,0,0.25)`
+              : "none"
+          }
+          w={config.boxWidth}
+          rounded="md"
+          overflow="hidden"
+          _hover={{
+            cursor: "move",
+          }}
+        >
+          {browserAddressBarNode()}
+          <Image
+            src={config.image}
+            alt="Preview image"
+            objectPosition="center"
+            draggable={false}
+          />
+        </Box>
+      </Draggable>
     </Box>
   );
 };
