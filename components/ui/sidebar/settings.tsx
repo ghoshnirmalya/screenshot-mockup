@@ -26,56 +26,35 @@ const Settings: FC = () => {
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel
-              htmlFor="show-browser-address-bar"
-              w="75%"
-              fontSize="sm"
-              mb={0}
-            >
-              Show browser address bar
+            <FormLabel htmlFor="width" w="75%" fontSize="sm">
+              Width
             </FormLabel>
-            <Switch
-              id="show-browser-address-bar"
-              isChecked={config.isBrowserAddressBarVisible}
-              onChange={() =>
-                updateConfig(
-                  "isBrowserAddressBarVisible",
-                  !config.isBrowserAddressBarVisible
-                )
-              }
-            />
+            <Slider
+              w="75%"
+              id="width"
+              defaultValue={config.width}
+              onChange={(value) => updateConfig("width", value)}
+              step={10}
+              min={50}
+              max={100}
+            >
+              <SliderTrack />
+              <SliderFilledTrack />
+              <SliderThumb boxSize={6}>
+                <Box as={MdGraphicEq} />
+              </SliderThumb>
+            </Slider>
           </HStack>
         </Stack>
       </FormControl>
-      {!!config.isBrowserAddressBarVisible && (
-        <FormControl>
-          <HStack justify="space-between">
-            <FormLabel
-              htmlFor="browserAddressBarBackgroundColor"
-              w="75%"
-              fontSize="sm"
-              mb={0}
-            >
-              Browser address bar background
-            </FormLabel>
-            <ColorPicker
-              color={config.browserAddressBarBackgroundColor}
-              setColor={(color) =>
-                updateConfig("browserAddressBarBackgroundColor", color)
-              }
-              id="browserAddressBarBackgroundColor"
-            />
-          </HStack>
-        </FormControl>
-      )}
       <FormControl>
         <Stack spacing={4} w="100%">
           <HStack justifyContent="space-between" alignItems="center">
-            <FormLabel htmlFor="show-box-shadow" fontSize="sm" mb={0}>
-              Show box shadow
+            <FormLabel htmlFor="show-shadow" fontSize="sm" mb={0}>
+              Show shadow
             </FormLabel>
             <Switch
-              id="show-box-shadow"
+              id="show-shadow"
               isChecked={config.isShadowVisible}
               onChange={() =>
                 updateConfig("isShadowVisible", !config.isShadowVisible)
@@ -94,8 +73,8 @@ const Settings: FC = () => {
               <Slider
                 w="75%"
                 id="browser-shadow-length"
-                defaultValue={config.browserShadowSpread}
-                onChange={(value) => updateConfig("browserShadowSpread", value)}
+                defaultValue={config.shadowSpread}
+                onChange={(value) => updateConfig("shadowSpread", value)}
                 step={1}
                 min={0}
                 max={10}
@@ -115,47 +94,37 @@ const Settings: FC = () => {
           <HStack justifyContent="space-between" alignItems="flex-start">
             <VStack alignItems="flex-start" spacing={0}>
               <FormLabel
-                htmlFor="show-container-background-color"
+                htmlFor="show-background-color"
                 fontSize="sm"
                 mb={0}
                 w="75%"
               >
-                Show container background color
+                Show background color
               </FormLabel>
               <FormHelperText fontSize="xs">
                 Doesn&apos;t show up if background image is present.
               </FormHelperText>
             </VStack>
             <Switch
-              id="show-container-background-color"
-              isChecked={config.showContainerBackgroundColor}
+              id="show-background-color"
+              isChecked={config.showBackgroundColor}
               onChange={() =>
-                updateConfig(
-                  "showContainerBackgroundColor",
-                  !config.showContainerBackgroundColor
-                )
+                updateConfig("showBackgroundColor", !config.showBackgroundColor)
               }
             />
           </HStack>
         </Stack>
       </FormControl>
-      {!!config.showContainerBackgroundColor && (
+      {!!config.showBackgroundColor && (
         <FormControl>
           <HStack justify="space-between">
-            <FormLabel
-              htmlFor="containerBackgroundColor"
-              w="75%"
-              fontSize="sm"
-              mb={0}
-            >
+            <FormLabel htmlFor="backgroundColor" w="75%" fontSize="sm" mb={0}>
               Container background color
             </FormLabel>
             <ColorPicker
-              color={config.containerBackgroundColor}
-              setColor={(color) =>
-                updateConfig("containerBackgroundColor", color)
-              }
-              id="containerBackgroundColor"
+              color={config.backgroundColor}
+              setColor={(color) => updateConfig("backgroundColor", color)}
+              id="backgroundColor"
             />
           </HStack>
         </FormControl>

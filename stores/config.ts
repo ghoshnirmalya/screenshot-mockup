@@ -5,13 +5,11 @@ const DEFAULT_CONFIG = {
   image: "",
   backgroundImage: "",
   darkenBackgroundImage: "0.5",
-  boxWidth: "50%",
-  browserAddressBarBackgroundColor: "#0693E3",
-  isBrowserAddressBarVisible: false,
+  width: "50",
   isShadowVisible: false,
-  browserShadowSpread: 0,
-  containerBackgroundColor: "#8ED1FC",
-  showContainerBackgroundColor: false,
+  shadowSpread: 0,
+  backgroundColor: "#8ED1FC",
+  showBackgroundColor: true,
 };
 
 interface ConfigState {

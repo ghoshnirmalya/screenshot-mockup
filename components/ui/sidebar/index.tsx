@@ -1,5 +1,4 @@
 import BackgroundImage from "@/components/ui/sidebar/background-image";
-import BoxWidth from "@/components/ui/sidebar/box-width";
 import DownloadAndResetButtons from "@/components/ui/sidebar/download-and-reset-buttons";
 import Settings from "@/components/ui/sidebar/settings";
 import {
@@ -14,10 +13,6 @@ import {
 import React, { FC } from "react";
 
 const SIDEBAR_ITEMS = [
-  {
-    title: "Box width",
-    component: BoxWidth,
-  },
   {
     title: "Settings",
     component: Settings,

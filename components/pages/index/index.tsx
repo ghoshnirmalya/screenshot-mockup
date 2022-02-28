@@ -23,17 +23,18 @@ const Index: NextComponentType = () => {
       <Box
         borderRightWidth={1}
         gridRow={[2, 2, 2, 1]}
-        minH={["50vh", "50vh", "50vh", "auto"]}
+        h={["50vh", "50vh", "50vh", "auto"]}
       >
         <Sidebar />
       </Box>
       <Box
-        minH={["50vh", "50vh", "50vh", "auto"]}
+        h={["50vh", "50vh", "50vh", "100vh"]}
         bg="gray.100"
         d="flex"
         justifyContent="center"
         alignItems="center"
         padding={12}
+        overflow="hidden"
       >
         {!config.image && <UploadImageButton />}
         {!!config.image && <Previewer />}
